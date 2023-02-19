@@ -11,6 +11,11 @@
   .app-nav-bar {
     background-color: #49494b;
   } */
+  .middle{
+    height: 78vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 .app_title{
     display: flex;
     justify-content: center;
