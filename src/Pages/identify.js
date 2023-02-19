@@ -59,9 +59,9 @@ async function load_model() {
       catch (error) {
         console.log('Not found in IndexedDB. Loading and saving...');
         console.log(error);
-        model = await loadGraphModel("https://raw.githubusercontent.com/hsiangling0/tableware_detector/blob/main/models/tableware_detector/model.json");
+        model = await loadGraphModel("https://raw.githubusercontent.com/hsiangling0/tableware_detector/main/models/tableware_detector/model.json");
         await model.save('indexeddb://' + INDEXEDDB_KEY);
-      }
+      }                               
     }
     // If no IndexedDB, then just download like normal.
     else {
