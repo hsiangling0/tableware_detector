@@ -9,9 +9,9 @@ import Account from './Pages/account';
 
 export default ({ childProps }) =>
   <Switch>
-    <Route path="/" exact component={Home} props={childProps} />
-    <Route path="/activities" exact component={Activities} props={childProps} />
-    <Route path="/identify" exact component={Identify} props={childProps} />
-    <Route path="/account" exact component={Account} props={childProps} />
+    <Route path="/tableware_detector/" exact component={Home} props={childProps} />
+    <Route path="/tableware_detector/activities" exact component={Activities} props={childProps} />
+    <Route path="/tableware_detector/identify" exact component={Identify} props={childProps} />
+    <Route path="/tableware_detector/account" exact component={Account} props={childProps} />
     {/* <Route component={NotFound} /> */}
   </Switch>;
