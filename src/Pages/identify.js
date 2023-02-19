@@ -59,7 +59,7 @@ async function load_model() {
       catch (error) {
         console.log('Not found in IndexedDB. Loading and saving...');
         console.log(error);
-        model = await loadGraphModel("http://127.0.0.1:8080/model.json");
+        model = await loadGraphModel("https://github.com/hsiangling0/tableware_detector/blob/main/models/tableware_detector/model.json");
         await model.save('indexeddb://' + INDEXEDDB_KEY);
       }
     }
