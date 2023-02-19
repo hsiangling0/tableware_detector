@@ -55,7 +55,7 @@ async function load_model() {
 
       }
       // If error here, assume that the object store doesn't exist and the model currently isn't
-      // saved in IndexedDB.
+      // saved in IndexedDB.https://raw.githubusercontent.com/hsiangling0/tableware_detector/main/models/tableware_detector/model.json
       catch (error) {
         console.log('Not found in IndexedDB. Loading and saving...');
         console.log(error);

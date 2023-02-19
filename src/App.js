@@ -75,16 +75,16 @@ class App extends Component {
             <Routes />
           {/* </Container> */}
           <div className='footer'>
-            <Link to="/" className="list" onClick={()=> this.changeColor(this,1)}>
+            <Link to="/tableware_detector/" className="list" onClick={()=> this.changeColor(this,1)}>
               <Rank fill={this.state.active_home?this.postcolor:this.precolor} width="48" height="48" className='app_rank' alt='rank_icon'/>
             </Link>
-            <Link to="/activities" className="list" onClick={()=> this.changeColor(this,2)}>
+            <Link to="/tableware_detector/activities" className="list" onClick={()=> this.changeColor(this,2)}>
               <Activ fill={this.state.active_activity?this.postcolor:this.precolor} width="48" height="48" className='app_activ' alt='activities_icon'/>
             </Link>
-            <Link to="/identify" className="list" onClick={()=> this.changeColor(this,3)}>
+            <Link to="/tableware_detector/identify" className="list" onClick={()=> this.changeColor(this,3)}>
               <Identify fill={this.state.active_identify?this.postcolor:this.precolor} width="48" height="48" className="app_identify" alt="identify_icon" />
             </Link>
-            <Link to="/account" className="list" onClick={()=> this.changeColor(this,4)}>
+            <Link to="/tableware_detector/account" className="list" onClick={()=> this.changeColor(this,4)}>
               <User fill={this.state.active_account?this.postcolor:this.precolor} width="48" height="48" className='app_user' alt='user_icon'/>
             </Link> 
           </div>
