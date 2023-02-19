@@ -1,7 +1,7 @@
 {
   "main.css": "/tableware_detector/static/css/main.1a9fd3f9.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.a8e6649f.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.a8e6649f.chunk.js.map",
+  "main.js": "/tableware_detector/static/js/main.b36f24ff.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.b36f24ff.chunk.js.map",
   "static/js/1.5b3ba542.chunk.js": "/tableware_detector/static/js/1.5b3ba542.chunk.js",
   "static/js/1.5b3ba542.chunk.js.map": "/tableware_detector/static/js/1.5b3ba542.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
@@ -19,6 +19,6 @@
   "static/media/User.54da0e38.svg": "/tableware_detector/static/media/User.54da0e38.svg",
   "static/css/main.1a9fd3f9.chunk.css.map": "/tableware_detector/static/css/main.1a9fd3f9.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.0cca7ea26e21d3831a58b47bbfea09c7.js": "/tableware_detector/precache-manifest.0cca7ea26e21d3831a58b47bbfea09c7.js",
+  "precache-manifest.d3d8ba87fd5ea3de4353b260f5f30a97.js": "/tableware_detector/precache-manifest.d3d8ba87fd5ea3de4353b260f5f30a97.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
