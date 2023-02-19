@@ -1,9 +1,9 @@
 {
-  "main.css": "/tableware_detector/static/css/main.1a9fd3f9.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.b36f24ff.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.b36f24ff.chunk.js.map",
-  "static/js/1.5b3ba542.chunk.js": "/tableware_detector/static/js/1.5b3ba542.chunk.js",
-  "static/js/1.5b3ba542.chunk.js.map": "/tableware_detector/static/js/1.5b3ba542.chunk.js.map",
+  "main.css": "/tableware_detector/static/css/main.f4d6dbd0.chunk.css",
+  "main.js": "/tableware_detector/static/js/main.00f6932c.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.00f6932c.chunk.js.map",
+  "static/js/1.df23fa95.chunk.js": "/tableware_detector/static/js/1.df23fa95.chunk.js",
+  "static/js/1.df23fa95.chunk.js.map": "/tableware_detector/static/js/1.df23fa95.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
   "runtime~main.js.map": "/tableware_detector/static/js/runtime~main.372aecb3.js.map",
   "static/media/search.svg": "/tableware_detector/static/media/search.c65f2f86.svg",
@@ -17,8 +17,8 @@
   "static/media/activity.d78bbedc.svg": "/tableware_detector/static/media/activity.d78bbedc.svg",
   "static/media/identify.c522bf4e.svg": "/tableware_detector/static/media/identify.c522bf4e.svg",
   "static/media/User.54da0e38.svg": "/tableware_detector/static/media/User.54da0e38.svg",
-  "static/css/main.1a9fd3f9.chunk.css.map": "/tableware_detector/static/css/main.1a9fd3f9.chunk.css.map",
+  "static/css/main.f4d6dbd0.chunk.css.map": "/tableware_detector/static/css/main.f4d6dbd0.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.d3d8ba87fd5ea3de4353b260f5f30a97.js": "/tableware_detector/precache-manifest.d3d8ba87fd5ea3de4353b260f5f30a97.js",
+  "precache-manifest.19a0630ef8e4a2e0d9a92a2003b7f652.js": "/tableware_detector/precache-manifest.19a0630ef8e4a2e0d9a92a2003b7f652.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
