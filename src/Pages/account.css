@@ -1,0 +1,55 @@
+.account_title{
+    display: flex;
+    align-items: center;
+    margin: 6vh 7vw 4.5vh 7vw;
+}
+.account_photo{
+    width: 60px;
+    height: 60px;
+    background: #D9D9D9;
+    border-radius: 10px;
+    margin-right: 9vw;
+}
+.acc_info{
+    flex-grow: 1;
+}
+.first_row_a{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+.club_a{
+    font-weight: bold;
+    font-size: 20px;
+}
+/* .amount{
+    color: #FFAD86;
+    font-size: 16px;
+    font-weight: bold;
+}  */
+.second_row{
+    text-align: left;
+    font-weight: 300;
+    font-size: 18px;
+    color: #9D9D9D;
+}
+.manage{
+    color: #ADADAD;
+    font-size: 18px;
+}
+.choice_a{
+    font-size: 18px;
+    color: #8E8E8E;
+    padding-bottom: 7px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 0.5px solid #ADADAD;
+    padding-left: 5vw;
+    margin-bottom: 1.5vh;
+}
+.function{
+    margin-left: 4vw;
+}

@@ -1,0 +1,57 @@
+#frame{
+  position: static;
+  text-align: center;
+}
+.input{
+  position: relative;
+}
+canvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+}
+.title{
+  font-size: 18px;
+  font-weight: bold;
+}
+.choice{
+  font-size: 16px;
+  color: #8E8E8E;
+  font-weight: bold;
+  border-bottom: 0.5px solid #ADADAD;
+  padding-bottom: 7px;
+}
+.realtime{
+  padding: 7px 6vw;
+  border-bottom: 0.5px solid #000000;
+  color:#000000;
+}
+.upload{
+  padding: 7px 6vw;
+}
+.current{
+  margin: 0 6vw;
+  font-size: 16px;
+  color: #ADADAD;
+}
+.data_r{
+  text-align: left;
+  margin: 2.5vh 6vw 2vh 6vw;
+}
+.row_r{
+  display: flex;
+  margin-bottom: 2vh;
+  justify-content: space-between;
+}
+.pop{
+  background: #C7C7E2;
+    border-radius: 10px;
+    width: 108px;
+    height: 37px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+}

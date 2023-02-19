@@ -1,0 +1,43 @@
+.popup{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+  
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-inner{
+    position: absolute;
+    padding: 30px 22px;
+    top: 279px;
+    left: 22px;
+    background-color: #fff;
+    width: 302px;
+    height: 196px;
+    border-radius: 10px;
+  }
+  
+  .popup-inner .close-btn{
+    position: absolute;
+    top:16px;
+    right: 16px;
+  }
+  .ask{
+    text-align: left;
+    margin: 0;
+  }
+  .ask_context{
+    text-align: left;
+    margin: 5.5vh 0;
+    font-size: 18px;
+  }
+  .concert{
+    background: #C7C7E2;
+    width: 108px;
+    height: 37px;
+  }

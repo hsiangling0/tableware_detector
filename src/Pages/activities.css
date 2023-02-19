@@ -1,0 +1,58 @@
+.title{
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 0.5px solid #ADADAD;
+    margin: 0 20vw 4.5vh;
+}
+h3{
+    font-size: 18px;
+}
+.act_data{
+    border-bottom: 0.5px solid #ADADAD;
+    margin:2.5vh 0;
+    display: flex;
+    align-items: center;
+}
+.act_num{
+    margin-left: 7vw;
+    font-weight: bold;
+}
+.act_info{
+    margin-left: 6vw;
+    margin-right: 7vw;
+    flex-grow: 1;
+}
+.first_row_a{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+.activity_name{
+    font-size: 18px;
+    font-weight: bold;
+}
+.date{
+    font-size: 15px;
+    color: #adadad;
+}
+.second_row_a{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+button{
+    width: 84px;
+    height: 33px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+}
+.state{
+    background: #FFBD9D;
+}
+.state_n{
+    background:#C7C7E2;
+}

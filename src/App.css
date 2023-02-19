@@ -1,0 +1,45 @@
+.App {
+    text-align: center;
+    background-color: white;
+    height: 100vh;
+  }
+  
+  /* .App .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .app-nav-bar {
+    background-color: #49494b;
+  } */
+.app_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    background-color: #C7C7E2;
+    padding-top: 6vh;
+}
+.app_icon{
+    margin-right: 10px;
+}
+.app_name{
+    font-size: 18px;
+    font-weight: bolder;
+    color:white;
+}
+.list{
+  fill:#adadad;
+}
+.list:focus{
+  fill:#2894FF;
+}
+.footer{
+  height: 9vh;
+  width: 100%;
+  background-color: #F0F0F0;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
