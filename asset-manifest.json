@@ -1,9 +1,9 @@
 {
   "main.css": "/tableware_detector/static/css/main.1a9fd3f9.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.19bce739.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.19bce739.chunk.js.map",
-  "static/js/1.5de6fcc9.chunk.js": "/tableware_detector/static/js/1.5de6fcc9.chunk.js",
-  "static/js/1.5de6fcc9.chunk.js.map": "/tableware_detector/static/js/1.5de6fcc9.chunk.js.map",
+  "main.js": "/tableware_detector/static/js/main.77825619.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.77825619.chunk.js.map",
+  "static/js/1.8a9c09d0.chunk.js": "/tableware_detector/static/js/1.8a9c09d0.chunk.js",
+  "static/js/1.8a9c09d0.chunk.js.map": "/tableware_detector/static/js/1.8a9c09d0.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
   "runtime~main.js.map": "/tableware_detector/static/js/runtime~main.372aecb3.js.map",
   "static/media/search.svg": "/tableware_detector/static/media/search.c65f2f86.svg",
@@ -19,6 +19,6 @@
   "static/media/User.54da0e38.svg": "/tableware_detector/static/media/User.54da0e38.svg",
   "static/css/main.1a9fd3f9.chunk.css.map": "/tableware_detector/static/css/main.1a9fd3f9.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.5021b30355d0f151857165fb3ad0012d.js": "/tableware_detector/precache-manifest.5021b30355d0f151857165fb3ad0012d.js",
+  "precache-manifest.fcff0d0c70ef82b2d80de6bed73b7e45.js": "/tableware_detector/precache-manifest.fcff0d0c70ef82b2d80de6bed73b7e45.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
