@@ -71,7 +71,7 @@ class App extends Component {
             <img src={icon} width="35" height="35" className='app_icon' alt='icon'/>
             <span className='app_name'>NCKU</span>
           </div>
-          <div class="middle">
+          <div className="middle">
              <Routes />
           </div>
           {/* <Container> */}
