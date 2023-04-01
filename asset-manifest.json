@@ -2,8 +2,8 @@
   "main.css": "/tableware_detector/static/css/main.a3ac74bc.chunk.css",
   "main.js": "/tableware_detector/static/js/main.bbd1fbee.chunk.js",
   "main.js.map": "/tableware_detector/static/js/main.bbd1fbee.chunk.js.map",
-  "static/js/1.eb53ac16.chunk.js": "/tableware_detector/static/js/1.eb53ac16.chunk.js",
-  "static/js/1.eb53ac16.chunk.js.map": "/tableware_detector/static/js/1.eb53ac16.chunk.js.map",
+  "static/js/1.ea20e712.chunk.js": "/tableware_detector/static/js/1.ea20e712.chunk.js",
+  "static/js/1.ea20e712.chunk.js.map": "/tableware_detector/static/js/1.ea20e712.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
   "runtime~main.js.map": "/tableware_detector/static/js/runtime~main.372aecb3.js.map",
   "static/media/search.svg": "/tableware_detector/static/media/search.c65f2f86.svg",
@@ -22,6 +22,6 @@
   "static/media/wallet.2248f8ca.svg": "/tableware_detector/static/media/wallet.2248f8ca.svg",
   "static/css/main.a3ac74bc.chunk.css.map": "/tableware_detector/static/css/main.a3ac74bc.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.5f8f5a58a854b156f4dfb68a96d93a20.js": "/tableware_detector/precache-manifest.5f8f5a58a854b156f4dfb68a96d93a20.js",
+  "precache-manifest.313d471860d00265df252bb507abcc55.js": "/tableware_detector/precache-manifest.313d471860d00265df252bb507abcc55.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
