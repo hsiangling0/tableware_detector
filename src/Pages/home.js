@@ -3,6 +3,29 @@ import "./home.css";
 import search from '../icons/search.svg';
 
 export default class home extends React.Component{
+    data=[
+        {
+           club: '成大流舞社',
+           amount:820,
+           address:'0x971003c...0915f',
+        },
+        {
+            club: '成大熱音社',
+            amount:524,
+            address:'0x981025l...0914h',
+        },
+        {
+            club: '成大籃球社',
+            amount:128,
+            address:'0x990811d...0320h',
+        },
+        {
+            club: '成大吉他社',
+            amount:106,
+            address:'0x000922s...0208i',
+        }
+    
+    ];
     render() {
         return (
           <div className="home">
@@ -16,58 +39,22 @@ export default class home extends React.Component{
                 <span className="title_context">VOLUME</span>
             </div>
             <div className="rank_context">
-                <div className="rank_data">
-                    <span className="num">1</span>
+            {this.data.map((data,index)=>{
+                return(
+                    <div className="rank_data" key={index}>
+                    <span className="num">{index+1}</span>
                     <div className="photo"></div>
                     <div className="info">
                         <div className="first_row">
-                            <span className="club">成大流舞社</span>
-                            <span className="amount">820VCN</span>
+                            <span className="club">{data.club}</span>
+                            <span className="amount">{data.amount}VCN</span>
                         </div>
                         <div className="second_row">
-                            <span className="id">0x971003c...0915f</span>
+                            <span className="id">{data.address}</span>
                         </div>
                     </div>
-                </div>
-                <div className="rank_data">
-                    <span className="num">2</span>
-                    <div className="photo"></div>
-                    <div className="info">
-                        <div className="first_row">
-                            <span className="club">成大熱音社</span>
-                            <span className="amount">524VCN</span>
-                        </div>
-                        <div className="second_row">
-                            <span className="id">0x981025l...0914h</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="rank_data">
-                    <span className="num">3</span>
-                    <div className="photo"></div>
-                    <div className="info">
-                        <div className="first_row">
-                            <span className="club">成大籃球社</span>
-                            <span className="amount">128VCN</span>
-                        </div>
-                        <div className="second_row">
-                            <span className="id">0x990811d...0320h</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="rank_data">
-                    <span className="num">4</span>
-                    <div className="photo"></div>
-                    <div className="info">
-                        <div className="first_row">
-                            <span className="club">成大吉他社</span>
-                            <span className="amount">106VCN</span>
-                        </div>
-                        <div className="second_row">
-                            <span className="id">0x000922s...0208i</span>
-                        </div>
-                    </div>
-                </div>
+                </div>)})
+            }
             </div>
           </div>
         );

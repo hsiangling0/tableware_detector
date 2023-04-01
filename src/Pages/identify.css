@@ -2,6 +2,10 @@
   position: static;
   text-align: center;
 }
+.back{
+  position: absolute;
+  left: 1vw;
+}
 .input{
   position: relative;
 }

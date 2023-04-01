@@ -8,6 +8,9 @@ import POPUP from '../component/popup';
 import UPLOAD from '../component/upload';
 import { load_model } from "../utilities/loadmodel";
 import {buildDetectedObjects} from "../utilities/buildOJ";
+import {ReactComponent as Back} from '../icons/back.svg';
+import WARNING from '../component/warning';
+
 tf.setBackend('webgl');
 // http-server -c1 --cors .
 const threshold = 0.6;
@@ -38,9 +41,11 @@ export default class identify extends React.Component {
       page:false,
       shutdown:false,
       switch:false,
+      back:false,
     }
     this.setButton=this.setButton.bind(this);
-    this.setPage=this.setPage.bind(this)
+    this.setPage=this.setPage.bind(this);
+    this.setBack=this.setBack.bind(this);
   }
   // constructor(props) {
   //   super(props);
@@ -174,6 +179,11 @@ export default class identify extends React.Component {
   };
   setButton(e,value){
     this.setState({ button: value,shutdown:value });
+    console.log(this.state.button);
+  }
+  setBack(e,value){
+    this.setState({ shutdown:value,back:value });
+    console.log(this.state.button);
   }
   setPage(e,value){
     // let temp=this.state.shutdown;
@@ -200,6 +210,9 @@ export default class identify extends React.Component {
   render() {
     return (
       <div>
+        <div className="back" >
+          <Back width="35" height="35" className='app_back' alt='back_icon' onClick={()=> this.setBack(this,true)}></Back>
+        </div>
         <div className="title_identify">
           <h3>Detection</h3>
         </div>
@@ -242,6 +255,7 @@ export default class identify extends React.Component {
         </div>
         <button className="pop" onClick={()=> this.setButton(this,true)}>確定</button>
         <POPUP trigger={this.state.button} setButton={this.setButton}></POPUP>
+        <WARNING trigger={this.state.back} setBack={this.setBack}></WARNING>
         </div>
         <UPLOAD trigger={this.state.page} setButton={this.setButton}></UPLOAD>
       </div>
