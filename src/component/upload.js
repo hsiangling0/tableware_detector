@@ -154,7 +154,7 @@ getFileBase64Encode(blob) {
                 <Images width="48" height="48" className='app_upload' alt='upload_icon'/>
                 <span className='upload_title'>upload</span>
             </div>
-            <input className="file" type="file" accept='image/*' capture='camera' onChange={this.uploadImage}/>
+            <input className="file" type="file" accept='image/*' onChange={this.uploadImage}/>
             <div className='input'>
             <img id="upload-image" crossOrigin="anonymous" width="340px" height="250px" ref={this.imageRef}/>
             <canvas className="size" ref={this.canvasRef} width="350" height="300"/>

@@ -32,6 +32,10 @@
     font-weight: bolder;
     color:white;
 }
+.app_wallet{
+  position: absolute;
+  right: 1vw;
+}
 .list{
   fill:#adadad;
 }

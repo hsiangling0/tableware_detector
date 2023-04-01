@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 // import AlertDismissable from './components/AlertDismissable';
@@ -8,8 +8,23 @@ import './App.css';
 import icon from './icons/logo_t.svg';
 import {ReactComponent as Rank}from './icons/rank.svg';
 import {ReactComponent as Activ} from './icons/activity.svg';
-import {ReactComponent as Identify} from './icons/identify.svg';
+import {ReactComponent as Trade} from './icons/trade.svg';
 import {ReactComponent as User} from './icons/User.svg';
+import {ReactComponent as Wallet} from './icons/wallet.svg';
+import Web3 from 'web3';
+
+async function connectWallet(){
+  if (typeof window.ethereum !== 'undefined') {
+    const web3 = new Web3(window.ethereum);
+    try {
+      await window.ethereum.enable();
+      const accounts = await web3.eth.getAccounts();
+      return accounts;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,10 +41,12 @@ class App extends Component {
       active_activity:false,
       active_identify:false,
       active_account:false,
+      account:"",
       // showUpdateAlert: true,
       // reloadMsg: reloadMsg
     };
-    this.changeColor=this.changeColor.bind(this)
+    this.changeColor=this.changeColor.bind(this);
+    this.connectWalletAccount=this.connectWalletAccount.bind(this)
   }
   changeColor(value){
     this.setState({
@@ -38,6 +55,13 @@ class App extends Component {
       active_identify:value===3?true:false,
       active_account:value===4?true:false,
     })
+  }
+  connectWalletAccount(){
+    connectWallet().then(accounts=>{
+      this.setState({account:accounts[0]});
+      console.log(this.state.account)})
+    // console.log(accounts);
+    // this.setState({account:accounts});
   }
   // dismissUpdateAlert = event => {
   //   this.setState({ showUpdateAlert: false });
@@ -70,6 +94,7 @@ class App extends Component {
           <div className='app_title'>
             <img src={icon} width="35" height="35" className='app_icon' alt='icon'/>
             <span className='app_name'>NCKU</span>
+            <Wallet width="48" height="48" className='app_wallet' alt='wallet_icon' onClick={()=>this.connectWalletAccount(this)}></Wallet>
           </div>
           <div className="middle">
              <Routes />
@@ -84,8 +109,8 @@ class App extends Component {
             <Link to="/tableware_detector/activities" className="list" onClick={()=> this.changeColor(this,2)}>
               <Activ fill={this.state.active_activity?this.postcolor:this.precolor} width="48" height="48" className='app_activ' alt='activities_icon'/>
             </Link>
-            <Link to="/tableware_detector/identify" className="list" onClick={()=> this.changeColor(this,3)}>
-              <Identify fill={this.state.active_identify?this.postcolor:this.precolor} width="48" height="48" className="app_identify" alt="identify_icon" />
+            <Link to="/tableware_detector/trade" className="list" onClick={()=> this.changeColor(this,3)}>
+              <Trade fill={this.state.active_identify?this.postcolor:this.precolor} width="48" height="48" className="app_trade" alt="trade_icon" />
             </Link>
             <Link to="/tableware_detector/account" className="list" onClick={()=> this.changeColor(this,4)}>
               <User fill={this.state.active_account?this.postcolor:this.precolor} width="48" height="48" className='app_user' alt='user_icon'/>

@@ -25,11 +25,11 @@ export default class account extends React.Component{
             <div className="choice_a">
               <div className="row">
                 <Account width="54" height="54" className='app_account' alt='account_icon'/>
-                <span className="function">個人帳號交易資料</span>
+                <span className="function">更改錢包地址</span>
               </div>
               <div className="row">
                 <Apply width="54" height="54" className='app_apply' alt='apply_icon'/>
-                <span className="function">申請人工審查</span>
+                <span className="function">更改帳號密碼</span>
               </div>
               <div className="row">
                 <Question width="54" height="54" className='app_question' alt='question_icon'/>
