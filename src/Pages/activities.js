@@ -7,16 +7,19 @@ export default class activities extends React.Component{
        title: '寒訓',
        date:'2023/2/10-2023/2/15',
        state:1, //已上傳
+       id:1,
     },
     {
       title: '社團博覽會',
       date:'2023/2/20-2023/2/23',
       state:2, //未上傳
+      id:2,
     },
     {
       title: '成果發表會',
       date:'2023/5/18-2023/5/19',
       state:0, //過期
+      id:3,
     }
 
 ];
@@ -38,7 +41,9 @@ export default class activities extends React.Component{
                     </div>
                     <div className="second_row_a">
                       {data.state==0&&<button className="state_e">已過期</button>}
-                      {data.state==1&&<button className="state">已上傳</button>}
+                      {data.state==1&&<Link to={`/tableware_detector/apply/${data.id}`}>
+                      <button className="state">已上傳</button>
+                    </Link>}
                       {data.state==2&&<Link to="/tableware_detector/identify">
                       <button className="state_n">未上傳
                       </button>

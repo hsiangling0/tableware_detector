@@ -53,3 +53,39 @@
 .function{
     margin-left: 4vw;
 }
+.frame{
+    margin-left: 10vw;
+    text-align: left;
+}
+.content_title{
+    font-size: 18px;
+    color: #8E8E8E;
+    margin-bottom: 3vh;
+}
+.choose{
+    margin-bottom: 3vh;
+}
+select{
+    width: 75vw;
+    font-size: 18px;
+    height: 4.5vh;
+    border-radius: 10px;
+    padding-left: 3vw;
+}
+input{
+    width: 75vw;
+    font-size: 18px;
+    height: 4.5vh;
+    border-radius: 10px;
+    border-width: 1px;
+    margin-bottom: 9vh;
+    padding-left: 3vw;
+}
+.address{
+    margin: 5.5vh 0;
+    width: 65vw;
+}
+.password{
+    margin: 2vh 0;
+    width: 65vw;
+}
