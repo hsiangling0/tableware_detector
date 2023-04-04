@@ -1,9 +1,9 @@
 {
-  "main.css": "/tableware_detector/static/css/main.a3ac74bc.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.bbd1fbee.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.bbd1fbee.chunk.js.map",
-  "static/js/1.ea20e712.chunk.js": "/tableware_detector/static/js/1.ea20e712.chunk.js",
-  "static/js/1.ea20e712.chunk.js.map": "/tableware_detector/static/js/1.ea20e712.chunk.js.map",
+  "main.css": "/tableware_detector/static/css/main.b654ad26.chunk.css",
+  "main.js": "/tableware_detector/static/js/main.69a251ee.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.69a251ee.chunk.js.map",
+  "static/js/1.1454434b.chunk.js": "/tableware_detector/static/js/1.1454434b.chunk.js",
+  "static/js/1.1454434b.chunk.js.map": "/tableware_detector/static/js/1.1454434b.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
   "runtime~main.js.map": "/tableware_detector/static/js/runtime~main.372aecb3.js.map",
   "static/media/search.svg": "/tableware_detector/static/media/search.c65f2f86.svg",
@@ -20,8 +20,8 @@
   "static/media/trade.3222de0f.svg": "/tableware_detector/static/media/trade.3222de0f.svg",
   "static/media/User.54da0e38.svg": "/tableware_detector/static/media/User.54da0e38.svg",
   "static/media/wallet.2248f8ca.svg": "/tableware_detector/static/media/wallet.2248f8ca.svg",
-  "static/css/main.a3ac74bc.chunk.css.map": "/tableware_detector/static/css/main.a3ac74bc.chunk.css.map",
+  "static/css/main.b654ad26.chunk.css.map": "/tableware_detector/static/css/main.b654ad26.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.313d471860d00265df252bb507abcc55.js": "/tableware_detector/precache-manifest.313d471860d00265df252bb507abcc55.js",
+  "precache-manifest.e888ec4f896f1263e40cdb2512f7ef8a.js": "/tableware_detector/precache-manifest.e888ec4f896f1263e40cdb2512f7ef8a.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
