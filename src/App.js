@@ -13,19 +13,19 @@ import {ReactComponent as User} from './icons/User.svg';
 import {ReactComponent as Wallet} from './icons/wallet.svg';
 import Web3 from 'web3';
 
-async function connectWallet(){
-  if (typeof window.ethereum !== 'undefined') {
-    const web3 = new Web3(window.ethereum);
-    try {
-      await window.ethereum.enable();
-      const accounts = await web3.eth.getAccounts();
-      return accounts;
-    } catch (error) {
-      return error;
-      console.error(error);
-    }
-  }
-}
+// async function connectWallet(){
+//   if (typeof window.ethereum !== 'undefined') {
+//     const web3 = new Web3(window.ethereum);
+//     try {
+//       await window.ethereum.enable();
+//       const accounts = await web3.eth.getAccounts();
+//       return accounts;
+//     } catch (error) {
+//       return error;
+//       console.error(error);
+//     }
+//   }
+// }
 class App extends Component {
   constructor(props) {
     super(props);
@@ -43,11 +43,13 @@ class App extends Component {
       active_identify:false,
       active_account:false,
       account:"",
+      web3:null,
       // showUpdateAlert: true,
       // reloadMsg: reloadMsg
     };
     this.changeColor=this.changeColor.bind(this);
-    this.connectWalletAccount=this.connectWalletAccount.bind(this)
+    this.connectWalletAccount=this.connectWalletAccount.bind(this);
+    // this.connectWalletAccount=this.connectWalletAccount.bind(this)
   }
   changeColor(value){
     this.setState({
@@ -58,11 +60,37 @@ class App extends Component {
     })
   }
   connectWalletAccount(){
-    connectWallet().then(accounts=>{
-      this.setState({account:accounts});
-      console.log(this.state.account)})
+    if (navigator.userAgent.includes('MetaMask')) {
+      window.location.href = 'metamask://open';
+    } else {
+      window.location.href = 'https://apps.apple.com/us/app/metamask/id1438144202';
+    }
+    // connectWallet().then(accounts=>{
+    //   this.setState({account:accounts});
+    //   console.log(this.state.account)})
     // console.log(accounts);
     // this.setState({account:accounts});
+  }
+  async connectWallet(){
+    if (window.ethereum) {
+      try {
+        // Request account access
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const web3 = new Web3(window.ethereum);
+        this.setState({web3:web3});
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+  async componentDidMount(){
+    await this.connectWallet();
+  }
+  async componentDidUpdate(prevProps,prevState){
+    if(this.state.web3 && prevState.web3 !== this.state.web3){
+      const account= await this.state.web3.eth.getAccounts();
+      this.setState({account:account});
+    }
   }
   // dismissUpdateAlert = event => {
   //   this.setState({ showUpdateAlert: false });
@@ -90,12 +118,13 @@ class App extends Component {
     //         }
     //       </Container>
   render() {
+    const {account} =this.state;
     return (
         <div className="App">
           <div className='app_title'>
             <img src={icon} width="35" height="35" className='app_icon' alt='icon'/>
             <span className='app_name'>NCKU</span>
-            {this.state.account!==""&&<span>{this.state.account}</span>}
+            {account.length>0&&<span>connected:{account[0]}</span>}
             <Wallet width="48" height="48" className='app_wallet' alt='wallet_icon' onClick={()=>this.connectWalletAccount(this)}></Wallet>
           </div>
           <div className="middle">
