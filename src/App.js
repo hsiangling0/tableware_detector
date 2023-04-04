@@ -21,6 +21,7 @@ async function connectWallet(){
       const accounts = await web3.eth.getAccounts();
       return accounts;
     } catch (error) {
+      return error;
       console.error(error);
     }
   }
@@ -58,7 +59,7 @@ class App extends Component {
   }
   connectWalletAccount(){
     connectWallet().then(accounts=>{
-      this.setState({account:accounts[0]});
+      this.setState({account:accounts});
       console.log(this.state.account)})
     // console.log(accounts);
     // this.setState({account:accounts});
@@ -94,6 +95,7 @@ class App extends Component {
           <div className='app_title'>
             <img src={icon} width="35" height="35" className='app_icon' alt='icon'/>
             <span className='app_name'>NCKU</span>
+            {this.state.account!==""&&<span>{this.state.account}</span>}
             <Wallet width="48" height="48" className='app_wallet' alt='wallet_icon' onClick={()=>this.connectWalletAccount(this)}></Wallet>
           </div>
           <div className="middle">

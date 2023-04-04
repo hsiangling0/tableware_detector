@@ -1,0 +1,39 @@
+.place_context{
+    text-align: left;
+    margin: 0 10vw;
+    font-weight: 700;
+    font-size: 18px;
+}
+.place_title{
+    margin-bottom: 3vh;
+}
+.date_input{
+    width: 50vw;
+    margin-left: 2vw;
+    height: 4vh;
+    margin-bottom: 0;
+}
+.place_choose{
+    margin: 4vh 10vw 2vh;
+    font-weight: 700;
+    font-size: 18px;
+    border-bottom: 0.5px solid #ADADAD;
+}
+.time{
+    list-style: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+.multicheckbox{
+    margin:0 3vw 0 0;
+    width: 8%;
+}
+.total{
+    text-align: right;
+    margin-right: 15vw;
+    font-weight: 700;
+    font-size: 17px;
+    color: #FFAD86;
+}
