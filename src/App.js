@@ -60,11 +60,22 @@ class App extends Component {
     })
   }
   connectWalletAccount(){
-    if (navigator.userAgent.includes('MetaMask')) {
-      window.location.href = 'metamask://open';
-    } else {
-      window.location.href = 'https://apps.apple.com/us/app/metamask/id1438144202';
+    if(this.state.account!==""){
+      alert("您已連接MetaMask帳號");
+      return;
     }
+    
+    setTimeout(() => {
+      if (!document.webkitHidden) {
+        window.location.href = 'https://metamask.app.link';
+      }
+    }, 25);
+    window.location.href = 'metamask://';
+    // else if (navigator.userAgent.includes('MetaMask')) {
+    //   window.location.href = 'metamask://open';
+    // } else {
+    //   window.location.href = 'https://metamask.app.link';
+    // }
     // connectWallet().then(accounts=>{
     //   this.setState({account:accounts});
     //   console.log(this.state.account)})
