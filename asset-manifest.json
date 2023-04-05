@@ -1,9 +1,9 @@
 {
-  "main.css": "/tableware_detector/static/css/main.b654ad26.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.06f55e65.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.06f55e65.chunk.js.map",
-  "static/js/1.e6c617ac.chunk.js": "/tableware_detector/static/js/1.e6c617ac.chunk.js",
-  "static/js/1.e6c617ac.chunk.js.map": "/tableware_detector/static/js/1.e6c617ac.chunk.js.map",
+  "main.css": "/tableware_detector/static/css/main.482fb9c7.chunk.css",
+  "main.js": "/tableware_detector/static/js/main.9691e4f0.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.9691e4f0.chunk.js.map",
+  "static/js/1.478ab520.chunk.js": "/tableware_detector/static/js/1.478ab520.chunk.js",
+  "static/js/1.478ab520.chunk.js.map": "/tableware_detector/static/js/1.478ab520.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
   "runtime~main.js.map": "/tableware_detector/static/js/runtime~main.372aecb3.js.map",
   "static/media/search.svg": "/tableware_detector/static/media/search.c65f2f86.svg",
@@ -20,8 +20,8 @@
   "static/media/trade.3222de0f.svg": "/tableware_detector/static/media/trade.3222de0f.svg",
   "static/media/User.54da0e38.svg": "/tableware_detector/static/media/User.54da0e38.svg",
   "static/media/wallet.2248f8ca.svg": "/tableware_detector/static/media/wallet.2248f8ca.svg",
-  "static/css/main.b654ad26.chunk.css.map": "/tableware_detector/static/css/main.b654ad26.chunk.css.map",
+  "static/css/main.482fb9c7.chunk.css.map": "/tableware_detector/static/css/main.482fb9c7.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.c3bfbcf85cf9993ccae3689020b433e5.js": "/tableware_detector/precache-manifest.c3bfbcf85cf9993ccae3689020b433e5.js",
+  "precache-manifest.10035ef0047de1de6fb9654aa5ae8346.js": "/tableware_detector/precache-manifest.10035ef0047de1de6fb9654aa5ae8346.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
