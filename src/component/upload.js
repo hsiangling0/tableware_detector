@@ -16,8 +16,12 @@ export default class UPLOAD extends React.Component{
         friendly:0,
         unfriendly:0,
         imageURL:null,
+        canvasURL:null,//set to backend
+        showCanvas:false,  
       }
       this.setButton=this.setButton.bind(this);
+      this.uploadImage=this.uploadImage.bind(this);
+      // this.renderPredictions=this.renderPredictions.bind(this);
     }
   imageRef = React.createRef();
   canvasRef = React.createRef();
@@ -39,8 +43,14 @@ export default class UPLOAD extends React.Component{
       
     
       renderPredictions = predictions => {
-        const ctx = this.canvasRef.current.getContext("2d");
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        const canvas = this.canvasRef.current;
+        const img=this.imageRef.current;
+        canvas.width=340;
+        canvas.height=250;
+        const ctx= canvas.getContext("2d");
+        // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        
+        ctx.drawImage(img, 0, 0,340,250);
         var eco=0;
         var noteco=0;
         // Font options.
@@ -87,9 +97,10 @@ export default class UPLOAD extends React.Component{
           ctx.fillStyle = "#000000";
           ctx.fillText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%", x, y);
         });
-        this.setState({friendly:eco,unfriendly:noteco});
+        this.setState({friendly:eco,unfriendly:noteco,canvasURL:canvas.toDataURL()});
       };
   startIdentify(){
+    this.setState({showCanvas:true});
     if(this.state.imageURL!==null){
       const modelPromise = new Promise((resolve, reject) => {resolve(load_model());});
       modelPromise
@@ -138,7 +149,7 @@ getFileBase64Encode(blob) {
     const imgDOM=document.getElementById('upload-image');
     const p1 = this.createImageFromFile(imgDOM, files[0]);
     const p2 = this.getFileBase64Encode(files[0]);
-
+    this.setState({showCanvas:false});
 	  Promise.all([p1, p2])
   	.then(result => {
     	const [img, b64] = result;
@@ -159,9 +170,8 @@ getFileBase64Encode(blob) {
             
             <div className='input'>
             <img id="upload-image" crossOrigin="anonymous" width="340px" height="250px" ref={this.imageRef}/>
-            <canvas className="size" ref={this.canvasRef} width="350" height="300"/>
+            {this.state.showCanvas&&<canvas className="size" ref={this.canvasRef} src={this.state.canvasURL} />}
             </div>
-            
             <div className='uploaded_button'>
                 <button className="pop" onClick={()=> this.startIdentify()} style={{background: "#FFBD9D"}} >開始辨識</button>
                 <button className="pop" onClick={()=> this.setButton(this,true)}>確定</button>

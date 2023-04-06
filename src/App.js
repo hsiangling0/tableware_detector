@@ -1,7 +1,6 @@
 import { PropTypes } from 'prop-types';
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Container, Nav, Navbar } from 'react-bootstrap';
 // import AlertDismissable from './components/AlertDismissable';
 import Routes from './Routes.js';
 import './App.css';
@@ -29,12 +28,6 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 class App extends Component {
   constructor(props) {
     super(props);
-    // const reloadMsg = `
-    //   New content is available.<br />
-    //   Please <a href='javascript:location.reload();'>reload</a>.<br />
-    //   <small>If reloading doesn't work, close all tabs/windows of this web application,
-    //   and then reopen the application.</small>
-    // `;
     const precolor = "#adadad";
     const postcolor = "#2894FF";
     this.state = {
@@ -44,12 +37,9 @@ class App extends Component {
       active_account: false,
       account: "",
       web3: null,
-      // showUpdateAlert: true,
-      // reloadMsg: reloadMsg
     };
     this.changeColor = this.changeColor.bind(this);
     this.connectWalletAccount = this.connectWalletAccount.bind(this);
-    // this.connectWalletAccount=this.connectWalletAccount.bind(this)
   }
   changeColor(value) {
     this.setState({
@@ -61,6 +51,10 @@ class App extends Component {
   }
 
   connectWalletAccount =async () => {
+    if(this.state.account!=="") {
+          alert("您已連接MetaMask帳號");
+          return;
+        }
     const provider = new WalletConnectProvider({
       infuraId: '3cb2eaaa46cc48828c9792f39afbe1be',
       qrcodeModalOptions: {
@@ -140,7 +134,6 @@ class App extends Component {
         <div className='app_title'>
           <img src={icon} width="35" height="35" className='app_icon' alt='icon' />
           <span className='app_name'>NCKU</span>
-          {account.length > 0 && <span>connected:{account}</span>}
           <Wallet width="48" height="48" className='app_wallet' alt='wallet_icon' onClick={() => this.connectWalletAccount(this)}></Wallet>
         </div>
         <div className="middle">

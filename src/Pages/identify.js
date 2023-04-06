@@ -31,7 +31,6 @@ const threshold = 0.6;
 export default class identify extends React.Component {
   videoRef = React.createRef();
   canvasRef = React.createRef();
-  photoRef=React.createRef();
   constructor(props){
     super(props);
     this.state={
@@ -42,6 +41,7 @@ export default class identify extends React.Component {
       shutdown:false,
       switch:false,
       back:false,
+      canvasURL:null,
     }
     this.setButton=this.setButton.bind(this);
     this.setPage=this.setPage.bind(this);
@@ -126,8 +126,14 @@ export default class identify extends React.Component {
   
 
   renderPredictions = predictions => {
-    const ctx = this.canvasRef.current.getContext("2d");
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    const canvas = this.canvasRef.current;
+    const img=this.videoRef.current;
+    canvas.width=400;
+    canvas.height=300;
+    const ctx= canvas.getContext("2d");
+        
+    ctx.drawImage(img, 0, 0,400,300);
+    // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     var eco=0;
     var noteco=0;
     // Font options.
@@ -175,7 +181,7 @@ export default class identify extends React.Component {
       ctx.fillStyle = "#000000";
       ctx.fillText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%", x, y);
     });
-    this.setState({friendly:eco,unfriendly:noteco});
+    this.setState({friendly:eco,unfriendly:noteco,canvasURL:canvas.toDataURL()});
   };
   setButton(e,value){
     this.setState({ button: value,shutdown:value });
@@ -221,7 +227,7 @@ export default class identify extends React.Component {
           <a className="upload" onClick={()=> this.setPage(this,true)}>upload</a>
         </div>
         <div className="page1">
-          <div className="input">
+          <div className="input_identify">
           <video
           className="size"
           autoPlay
@@ -229,14 +235,12 @@ export default class identify extends React.Component {
           muted
           ref={this.videoRef}
           width="400"
-          height="350"
+          height="300"
           id="frame"
         />
         <canvas
           className="size"
           ref={this.canvasRef}
-          width="450"
-          height="350"
         />
         {/* <canvas className="container" ref={this.photoRef} width="400"
           height="300"></canvas> */}
