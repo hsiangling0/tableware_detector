@@ -173,7 +173,7 @@ getFileBase64Encode(blob) {
             {this.state.showCanvas&&<canvas className="size" ref={this.canvasRef} src={this.state.canvasURL} />}
             </div>
             <div className='uploaded_button'>
-                <button className="pop" onClick={()=> this.startIdentify()} style={{background: "#FFBD9D"}} >開始辨識</button>
+                <button className="pop" onClick={()=> this.startIdentify()} style={{background: "#FFBD9D"}} >辨識</button>
                 <button className="pop" onClick={()=> this.setButton(this,true)}>確定</button>
                 <POPUP trigger={this.state.button} setButton={this.setButton}></POPUP>
             </div>
