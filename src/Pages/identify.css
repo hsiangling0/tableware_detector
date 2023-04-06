@@ -59,3 +59,7 @@ canvas{
     font-weight: bold;
     border: none;
 }
+.input_identify{
+  margin:2vh 0;
+  position: relative;
+}

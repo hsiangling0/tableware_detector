@@ -1,15 +1,6 @@
 .home{
     margin-top:5vh;
 }
-.search{
-    border: 1px solid #ADADAD;
-    border-radius: 10px;
-    width: 86vw;
-    margin: auto;
-    height: 5.5vh;
-    display: flex;
-    align-items: center;
-}
 .app_search{
     margin:0px 10px;
 }

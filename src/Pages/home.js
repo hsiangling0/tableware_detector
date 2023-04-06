@@ -29,10 +29,6 @@ export default class home extends React.Component{
     render() {
         return (
           <div className="home">
-            <div className="search">
-                <img src={search} width="30" height="30" className='app_search' alt='search_icon'/>
-                <span className="search_alt">search for the club...</span>
-            </div>
             <h4>TOP</h4>
             <div className="rank_title">
                 <span className="title_context">CLUB</span>
