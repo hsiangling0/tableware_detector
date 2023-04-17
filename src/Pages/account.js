@@ -89,7 +89,7 @@ export default class account extends React.Component{
               <div className="account_photo"></div>
               <div className="acc_info">
                 <div className="first_row_a">
-                  <span className="club_a">成大流舞社</span>
+                  <span className="club_a">{this.state.select}</span>
                   <span className="amount">524VCN</span>
                 </div>
                 <div className="second_row">
