@@ -1,9 +1,9 @@
 {
   "main.css": "/tableware_detector/static/css/main.766aade8.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.87a145b8.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.87a145b8.chunk.js.map",
-  "static/js/1.e76237c3.chunk.js": "/tableware_detector/static/js/1.e76237c3.chunk.js",
-  "static/js/1.e76237c3.chunk.js.map": "/tableware_detector/static/js/1.e76237c3.chunk.js.map",
+  "main.js": "/tableware_detector/static/js/main.487b0e8c.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.487b0e8c.chunk.js.map",
+  "static/js/1.3b8dfa0a.chunk.js": "/tableware_detector/static/js/1.3b8dfa0a.chunk.js",
+  "static/js/1.3b8dfa0a.chunk.js.map": "/tableware_detector/static/js/1.3b8dfa0a.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
   "runtime~main.js.map": "/tableware_detector/static/js/runtime~main.372aecb3.js.map",
   "static/media/logo_t.svg": "/tableware_detector/static/media/logo_t.f4715a84.svg",
@@ -22,6 +22,6 @@
   "static/media/wallet.2248f8ca.svg": "/tableware_detector/static/media/wallet.2248f8ca.svg",
   "static/css/main.766aade8.chunk.css.map": "/tableware_detector/static/css/main.766aade8.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.22c8217774afa782ab07cd02948d65a1.js": "/tableware_detector/precache-manifest.22c8217774afa782ab07cd02948d65a1.js",
+  "precache-manifest.da9566777fde0324539997f6e00942fe.js": "/tableware_detector/precache-manifest.da9566777fde0324539997f6e00942fe.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
