@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "487b0e8cccf2826fa6b2",
+    "revision": "5f4972def7dd7b1af6f6",
     "url": "/tableware_detector/static/css/main.766aade8.chunk.css"
   },
   {
-    "revision": "487b0e8cccf2826fa6b2",
-    "url": "/tableware_detector/static/js/main.487b0e8c.chunk.js"
+    "revision": "5f4972def7dd7b1af6f6",
+    "url": "/tableware_detector/static/js/main.5f4972de.chunk.js"
   },
   {
     "revision": "3b8dfa0a905f2ac14008",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
     "url": "/tableware_detector/static/media/wallet.2248f8ca.svg"
   },
   {
-    "revision": "795762f09e6880b408f972b7ce51e54e",
+    "revision": "fbc8b40cfd1c1b539b9bd997d5469ff8",
     "url": "/tableware_detector/index.html"
   }
 ];

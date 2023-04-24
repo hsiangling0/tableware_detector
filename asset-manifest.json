@@ -1,7 +1,7 @@
 {
   "main.css": "/tableware_detector/static/css/main.766aade8.chunk.css",
-  "main.js": "/tableware_detector/static/js/main.487b0e8c.chunk.js",
-  "main.js.map": "/tableware_detector/static/js/main.487b0e8c.chunk.js.map",
+  "main.js": "/tableware_detector/static/js/main.5f4972de.chunk.js",
+  "main.js.map": "/tableware_detector/static/js/main.5f4972de.chunk.js.map",
   "static/js/1.3b8dfa0a.chunk.js": "/tableware_detector/static/js/1.3b8dfa0a.chunk.js",
   "static/js/1.3b8dfa0a.chunk.js.map": "/tableware_detector/static/js/1.3b8dfa0a.chunk.js.map",
   "runtime~main.js": "/tableware_detector/static/js/runtime~main.372aecb3.js",
@@ -22,6 +22,6 @@
   "static/media/wallet.2248f8ca.svg": "/tableware_detector/static/media/wallet.2248f8ca.svg",
   "static/css/main.766aade8.chunk.css.map": "/tableware_detector/static/css/main.766aade8.chunk.css.map",
   "index.html": "/tableware_detector/index.html",
-  "precache-manifest.da9566777fde0324539997f6e00942fe.js": "/tableware_detector/precache-manifest.da9566777fde0324539997f6e00942fe.js",
+  "precache-manifest.73f05fe8a414f880b77506a03df10220.js": "/tableware_detector/precache-manifest.73f05fe8a414f880b77506a03df10220.js",
   "service-worker.js": "/tableware_detector/service-worker.js"
 }
