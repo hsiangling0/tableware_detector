@@ -93,7 +93,7 @@ export default class account extends React.Component{
                   <span className="amount">524VCN</span>
                 </div>
                 <div className="second_row">
-                  <span className="id">0x0000...00000</span>
+                  <span className="id">{this.state.address}</span>
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default class account extends React.Component{
               </select>
           </div>
           <div className='content_title'>密碼</div>
-          <input type="text" placeholder={"請輸入密碼"} onChange={(e)=>this.setState({pwd:e.target.value})}></input>
+          <input type="password" placeholder={"請輸入密碼"} onChange={(e)=>this.setState({pwd:e.target.value})}></input>
           </div>
           
           <button className="concert" onClick={()=> this.login(this)}>登入</button>
