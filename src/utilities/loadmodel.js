@@ -37,10 +37,11 @@ export async function load_model() {
         // If error here, assume that the object store doesn't exist and the model currently isn't
         // saved in IndexedDB.https://raw.githubusercontent.com/hsiangling0/tableware_detector/main/models/tableware_detector/model.json
         catch (error) {
-          console.log('Not found in IndexedDB. Loading and saving...');
-          console.log(error);
+          // model = await loadGraphModel("https://raw.githubusercontent.com/hsiangling0/object_detector_app/main/models/tableware_detector/model.json");
           model = await loadGraphModel("https://raw.githubusercontent.com/hsiangling0/tableware_detector/main/models/tableware_detector/model.json");
           await model.save('indexeddb://' + INDEXEDDB_KEY);
+          console.log('Not found in IndexedDB. Loading and saving...');
+          console.log(error);
         }                               
       }
       // If no IndexedDB, then just download like normal.

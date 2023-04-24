@@ -57,11 +57,10 @@ export default class UPLOAD extends React.Component{
         const font = "16px sans-serif";
         ctx.font = font;
         ctx.textBaseline = "top";
-    
         //Getting predictions
         const boxes = predictions[2].arraySync();
-        const scores = predictions[6].arraySync();
-        const classes = predictions[7].dataSync();
+        const scores = predictions[0].arraySync();
+        const classes = predictions[4].dataSync();
         const detections = buildDetectedObjects(scores, threshold,
           boxes, classes,document.getElementById('upload-image'));
         detections.forEach(item => {
