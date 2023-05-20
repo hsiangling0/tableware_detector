@@ -96,6 +96,21 @@ export default class UPLOAD extends React.Component{
           ctx.fillStyle = "#000000";
           ctx.fillText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%", x, y);
         });
+        // const dataURL = canvas.toDataURL('image/png')
+        // const blobBin = atob(dataURL.split(',')[1])
+        // const array = []
+        // for (let i = 0; i < blobBin.length; i++) {
+        //     array.push(blobBin.charCodeAt(i))
+        // }
+        // const file = new Blob([new Uint8Array(array)], { type: 'image/png' });
+        // var link=URL.createObjectURL(file);
+        // console.log(link);
+        // // 將file 加至 formData
+        // console.log(file);
+        // const formData = new FormData()
+        // formData.append('file', file, 'test.png')
+        // console.log(formData.getAll('file'));
+        console.log(eco);
         this.setState({friendly:eco,unfriendly:noteco,canvasURL:canvas.toDataURL()});
       };
   startIdentify(){
@@ -120,6 +135,7 @@ export default class UPLOAD extends React.Component{
   createImageFromFile(img, file) {
 	return new Promise((resolve, reject) => {    
     img.src = URL.createObjectURL(file);
+    console.log(img.src);
     this.setState({
       imageURL:img.src
     });
@@ -160,13 +176,11 @@ getFileBase64Encode(blob) {
     render(){
       return (this.props.trigger)?(
         <div className="upload-page">
-          
             <div className='upload_button' >
                 <Images width="48" height="48" className='app_upload' alt='upload_icon'/>
                 <span className='upload_title'>upload</span>
                 <input className="file" type="file" accept='image/*' onChange={this.uploadImage}/>
             </div>
-            
             <div className='input'>
             <img id="upload-image" crossOrigin="anonymous" width="340px" height="250px" ref={this.imageRef}/>
             {this.state.showCanvas&&<canvas className="size" ref={this.canvasRef} src={this.state.canvasURL} />}
@@ -174,7 +188,7 @@ getFileBase64Encode(blob) {
             <div className='uploaded_button'>
                 <button className="pop" onClick={()=> this.startIdentify()} style={{background: "#FFBD9D"}} >辨識</button>
                 <button className="pop" onClick={()=> this.setButton(this,true)}>確定</button>
-                <POPUP trigger={this.state.button} setButton={this.setButton}></POPUP>
+                <POPUP trigger={this.state.button} activity_id={this.props.activity_id} num={this.state.friendly} base64={this.state.canvasURL} setButton={this.setButton}></POPUP>
             </div>
             <div className="data_r">
                 <div className="row_r">

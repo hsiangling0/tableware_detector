@@ -14,7 +14,7 @@ export default ({ childProps }) =>
   <Switch>
     <Route path="/tableware_detector/" exact component={Home} props={childProps} />
     <Route path="/tableware_detector/activities" exact component={Activities} props={childProps} />
-    <Route path="/tableware_detector/identify" exact component={Identify} props={childProps} />
+    <Route path="/tableware_detector/identify/:id" exact component={Identify} props={childProps} />
     <Route path="/tableware_detector/trade" exact component={Trade} props={childProps} />
     <Route path="/tableware_detector/account" exact component={Account} props={childProps} />
     <Route path="/tableware_detector/apply/:id" exact component={Apply} props={childProps} />

@@ -58,9 +58,9 @@ class App extends Component {
     const provider = new WalletConnectProvider({
       // infuraId: '3cb2eaaa46cc48828c9792f39afbe1be',
         rpc: {
-          421613: "https://arbitrum-goerli.rpc.thirdweb.com",
+          11155111: "https://arbitrum-goerli.rpc.thirdweb.com",
         },
-        chainId: 421613,
+        chainId: 11155111,
         network: "arbitrum goerli",
       qrcodeModalOptions: {
         mobileLinks: [

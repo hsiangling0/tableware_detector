@@ -257,10 +257,10 @@ export default class identify extends React.Component {
           </div>
         </div>
         <button className="pop" onClick={()=> this.setButton(this,true)}>確定</button>
-        <POPUP trigger={this.state.button} setButton={this.setButton}></POPUP>
+        <POPUP trigger={this.state.button} activity_id={this.props.match.params.id} num={this.state.friendly} base64={this.state.canvasURL} setButton={this.setButton}></POPUP>
         <WARNING trigger={this.state.back} setBack={this.setBack}></WARNING>
         </div>
-        <UPLOAD trigger={this.state.page} setButton={this.setButton}></UPLOAD>
+        <UPLOAD trigger={this.state.page} setButton={this.setButton} activity_id={this.props.match.params.id}></UPLOAD>
       </div>
     );
   }

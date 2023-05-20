@@ -5,8 +5,10 @@ import {ReactComponent as Apply} from '../icons/recheck_apply.svg';
 import {ReactComponent as Question} from '../icons/question.svg';
 import {ReactComponent as Logout} from '../icons/logout.svg';
 import {ReactComponent as Delete} from '../icons/delete.svg';
-import axios from "axios";
-
+import {getClub} from '../utilities/api';
+import {login} from '../utilities/api';
+import {getTokenNum} from '../utilities/api';
+import {updataAddrOrPasswd} from '../utilities/api';
 
 export default class account extends React.Component{
   constructor(props){
@@ -15,73 +17,116 @@ export default class account extends React.Component{
       option1:false,
       option2:false,
       login:false,
-      select:this.data[0],
       pwd:'',
       address:'',
-      origin:'',
+      tmpaddress:'',
       newpwd:'',
+      data:[],
+      name:'',
+      clubID:0,
+      token:0,
     }
     this.setLogin=this.setLogin.bind(this);
-    this.login=this.login.bind(this);
+    this.loginCheck=this.loginCheck.bind(this);
     this.updateAddress=this.updateAddress.bind(this);
     this.updatePassword=this.updatePassword.bind(this);
   }
   setLogin(e,value){
     this.setState({login:value});
   }
-  data=["成大流舞社","成大熱音社","成大籃球社"];
-  // userRequest = axios.create({
-  //   baseURL: 'http://localhost:8080',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   })
-
-  // checkToken(){
-  //       return userRequest.post("/login",
-  //       JSON.stringify({
-  //       select,
-  //       pwd})
-  //       ).then((res) => res.data).catch((err)=>err.toString());
-  // }
-  login(){
-        if(this.state.select==""){
-            alert("請選擇社團名稱");
-        }
-        else if(this.state.pwd==""){
+  loginCheck(){
+        if(this.state.pwd==""){
             alert("請輸入密碼");
         }
         else{
-          this.setState({login:true});
+          let club_name=this.state.data[this.state.clubID];
+          login(this.state.clubID+1,this.state.pwd)
+          .then((res) => {
+              localStorage.clear();
+              localStorage.setItem('token', JSON.stringify(res.token));
+              localStorage.setItem('id', JSON.stringify(this.state.clubID+1));
+              localStorage.setItem('passwd', JSON.stringify(this.state.pwd));
+              localStorage.setItem('name', JSON.stringify(club_name));
+              this.setState({login:true,name:club_name})
+        })
+        .then(()=>{
+            let token;
+            let add;
+            getTokenNum(this.state.clubID+1)
+            .then((res)=>{
+                localStorage.setItem('token_num', JSON.stringify(res.token));
+                localStorage.setItem('address', JSON.stringify(res.address));
+                token=res.token;
+                add=res.address;
+                this.setState({token:token,address:add});
+            })
+        })
+          .catch(()=>{
+              alert("密碼錯誤");
+          }
+          )
         }
-        // connect to backend
-        // else{
-        //     checkToken().then((e)=>{
-        //         if(e.token==null)alert("密碼錯誤");
-        //         props.setLogin(true);
-        //     })
-        // }
     }
     updateAddress(){
-      if(this.state.address==""){
+      if(this.state.tmpaddress==""){
           alert("請輸入MetaMask地址");
       }
       else{
-        this.setState({option1:false});
+        let id=localStorage.getItem('id');
+        updataAddrOrPasswd(id,this.state.pwd,this.state.name,this.state.tmpaddress)
+        .then((res)=>{
+          localStorage.setItem('address', JSON.stringify(res.address));
+          this.setState({option1:false,address:res.address});
+        })
+        .catch((err)=>{
+          console.log(err);
+          alert("更改錢包地址失敗，請注意地址格式是否正確");
+          this.setState({option1:false});
+        })
       }
     }
     updatePassword(){
-      if(this.state.origin==""){
-        alert("請輸入原密碼");
-      }
-      else if(this.state.newpwd==""){
-        alert("請輸入新密碼");
-      }
-      else if(this.state.origin!=="1234"){
-        alert("原密碼錯誤，請重新輸入");
+      if(this.state.newpwd==""){
+        alert("密碼不得設為空");
       }
       else{
-        this.setState({option2:false});
+        let id=localStorage.getItem('id');
+        updataAddrOrPasswd(id,this.state.newpwd,this.state.name,this.state.address)
+        .then((res)=>{
+          console.log(res);
+          localStorage.setItem('password', JSON.stringify(res.password));
+          this.setState({option2:false});
+        })
+        .catch((err)=>{
+          console.log(err);
+          alert("更改密碼失敗");
+          this.setState({option2:false});
+        })
       }
-  }
+   }
+   componentDidMount(){
+    let temp=[];
+    if(localStorage.getItem('token')!==null){
+      let name=JSON.parse(localStorage.getItem('name'));
+      let token_num=localStorage.getItem('token_num');
+      let address=JSON.parse(localStorage.getItem('address'));
+      this.setState({login:true,name:name,address:address,token:token_num});
+    }
+    else{
+      getClub()
+        .then((res)=>{
+          res.sort((a,b)=>{
+            return a.id-b.id;
+          })
+          res.forEach((element) => {
+            temp.push(element.name);
+          });
+          this.setState({data:temp});
+        })
+    }
+      
+   }
+
     render() {
         return(this.state.login) ?(
           <div>
@@ -89,21 +134,21 @@ export default class account extends React.Component{
               <div className="account_photo"></div>
               <div className="acc_info">
                 <div className="first_row_a">
-                  <span className="club_a">{this.state.select}</span>
-                  <span className="amount">524VCN</span>
+                  <span className="club_a">{this.state.name}</span>
+                  <span className="amount">{this.state.token}VCN</span>
                 </div>
                 <div className="second_row">
-                  <span className="id">{this.state.address}</span>
+                  <span className="id">{this.state.address.substr(0,5)}......{this.state.address.substr(-5)}</span>
                 </div>
               </div>
             </div>
             <h4 className="manage">管理</h4>
             <div className="choice_a">
-              <div className="row" onClick={()=>this.setState({option1:true,address:''})}>
+              <div className="row" onClick={()=>this.setState({option1:true,tmpaddress:''})}>
                 <Account width="54" height="54" className='app_account' alt='account_icon'/>
                 <span className="function">更改錢包地址</span>
               </div>
-              <div className="row" onClick={()=>this.setState({option2:true,origin:'',newpwd:''})}>
+              <div className="row" onClick={()=>this.setState({option2:true,newpwd:''})}>
                 <Apply width="54" height="54" className='app_apply' alt='apply_icon'/>
                 <span className="function">更改帳號密碼</span>
               </div>
@@ -111,7 +156,7 @@ export default class account extends React.Component{
                 <Question width="54" height="54" className='app_question' alt='question_icon'/>
                 <span className="function">使用說明</span>
               </div>
-              <div className="row" style={{border:"none"}} onClick={()=>this.setState({login:false})}>
+              <div className="row" style={{border:"none"}} onClick={()=>{this.setState({login:false});localStorage.removeItem('token');}}>
                 <Logout width="54" height="54" className='app_logout' alt='logout_icon'/>
                 <span className="function" >登出</span>
               </div>
@@ -123,7 +168,7 @@ export default class account extends React.Component{
                     <Delete width="35" height="35" className='app_delete' alt='delete_icon'/>
                 </div>
                 <h3 className='ask'>更改MetaMask帳戶地址</h3>
-                <input type="text" className="address" placeholder={"請輸入MetaMask地址"} onChange={(e)=>this.setState({address:e.target.value})}></input>
+                <input type="text" className="address" placeholder={"請輸入MetaMask地址"} onChange={(e)=>this.setState({tmpaddress:e.target.value})}></input>
                 <button className="concert"onClick={()=> this.updateAddress(this)}>確定</button>
               </div>
             </div>}
@@ -134,7 +179,6 @@ export default class account extends React.Component{
                     <Delete width="35" height="35" className='app_delete' alt='delete_icon'/>
                 </div>
                 <h3 className='ask'>更改帳戶密碼</h3>
-                <input type="text" className="password" placeholder={"請輸入原密碼"} onChange={(e)=>this.setState({origin:e.target.value})}></input>
                 <input type="text" className="password" placeholder={"請輸入新密碼"} onChange={(e)=>this.setState({newpwd:e.target.value})}></input>
                 <button className="concert"onClick={()=> this.updatePassword(this)}>確定</button>
               </div>
@@ -149,10 +193,10 @@ export default class account extends React.Component{
           <div className='frame'>
               <div className='content_title'>社團名稱</div>
           <div className="choose">
-              <select className="selected" value={this.state.select}placeholder={"請選擇社團名稱"} onChange={(e)=>this.setState({select:e.target.value})}>
-              {this.data.map((data,index)=>{
+              <select className="selected" value={this.state.clubID} placeholder={"請選擇社團名稱"} onChange={(e)=>this.setState({clubID:parseInt(e.target.value)})}>
+              {this.state.data.map((data,index)=>{
               return(
-                  <option key={index} value={data}>{data}</option>)})
+                  <option key={index} value={index}>{data}</option>)})
               }
               </select>
           </div>
@@ -160,7 +204,7 @@ export default class account extends React.Component{
           <input type="password" placeholder={"請輸入密碼"} onChange={(e)=>this.setState({pwd:e.target.value})}></input>
           </div>
           
-          <button className="concert" onClick={()=> this.login(this)}>登入</button>
+          <button className="concert" onClick={()=> this.loginCheck(this)}>登入</button>
       </div>
         );
       }
