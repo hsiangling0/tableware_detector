@@ -1,31 +1,23 @@
 import React from "react";
 import "./home.css";
-import search from '../icons/search.svg';
+import {getClub} from '../utilities/api';
 
 export default class home extends React.Component{
-    data=[
-        {
-           club: '成大流舞社',
-           amount:820,
-           address:'0x971003c...0915f',
-        },
-        {
-            club: '成大熱音社',
-            amount:524,
-            address:'0x981025l...0914h',
-        },
-        {
-            club: '成大籃球社',
-            amount:128,
-            address:'0x990811d...0320h',
-        },
-        {
-            club: '成大吉他社',
-            amount:106,
-            address:'0x000922s...0208i',
+    constructor(props){
+        super(props);
+        this.state={
+          data:[],
         }
-    
-    ];
+    }
+    componentDidMount(){
+        getClub()
+        .then((res)=>{
+            res.sort((a,b)=>{
+                return b.token - a.token;
+            })
+            this.setState({data:res});
+          });    
+    }
     render() {
         return (
           <div className="home">
@@ -35,18 +27,18 @@ export default class home extends React.Component{
                 <span className="title_context">VOLUME</span>
             </div>
             <div className="rank_context">
-            {this.data.map((data,index)=>{
+            {this.state.data.map((data,index)=>{
                 return(
                     <div className="rank_data" key={index}>
                     <span className="num">{index+1}</span>
                     <div className="photo"></div>
                     <div className="info">
                         <div className="first_row">
-                            <span className="club">{data.club}</span>
-                            <span className="amount">{data.amount}VCN</span>
+                            <span className="club">{data.name}</span>
+                            <span className="amount">{data.token}VCN</span>
                         </div>
                         <div className="second_row">
-                            <span className="id">{data.address}</span>
+                            <span className="id">{data.address.substr(0,5)}......{data.address.substr(-5)}</span>
                         </div>
                     </div>
                 </div>)})

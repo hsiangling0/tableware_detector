@@ -2,6 +2,8 @@ import React from "react";
 import "./apply.css";
 import axios from "axios";
 import {ReactComponent as Delete} from '../icons/delete.svg';
+import { showPic } from "../utilities/api";
+import { reportErr } from "../utilities/api";
 export default class apply extends React.Component{
   //活動id = this.props.match.params.id;
   constructor(props){
@@ -10,10 +12,12 @@ export default class apply extends React.Component{
       isapply:false,
       amount:-1,
       preamount:0,
+      url:"",
+      picID:-1,
     }
     this.apply_text=this.apply_text.bind(this);
   }
-  imageRef = React.createRef();
+  // imageRef = React.createRef();
   // you can see route information here...
   // componentDidMount() {
   //   console.log(this.props.match);
@@ -43,17 +47,38 @@ export default class apply extends React.Component{
       alert("輸入值需大於零，請重新輸入");
     }
     else{
-      this.setState({isapply:false});
+      reportErr(this.state.picID,this.state.amount)
+      .then(()=>{
+        alert("提交申請成功");
+        this.setState({isapply:false});
+        this.props.history.push('/tableware_detector/activities');
+      })
+      .catch((err)=>{
+        alert("提交申請失敗，請重新提交");
+        this.setState({isapply:false});
+      })
     }
   }
-  
+  componentDidMount(){
+    console.log(this.props.match.params.id);
+    showPic(this.props.match.params.id)
+    .then((res)=>{
+      console.log(res.length);
+      let index=res.length-1;
+      this.setState({url:res[index].base64,preamount:res[index].num_friendly,picID:res[index].id})
+    })
+    .catch((err)=>{
+      alert("操作錯誤，請重新執行");
+    })
+  }
+
     render() {
         return (
           <div>
             <div className="title">
               <h3>Activities</h3>
             </div>
-            <img id="upload-image" crossOrigin="anonymous" width="340px" height="250px" ref={this.imageRef}/>
+            {this.state.url!=="" && <img id="upload-image" crossOrigin="anonymous" width="340px" height="250px" src={this.state.url}/>}
             <div className="data_r">
                 <div className="row_r">
                     <span className="title_r">eco-friendly items:</span>
