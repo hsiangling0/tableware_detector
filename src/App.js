@@ -35,8 +35,6 @@ class App extends Component {
       active_activity: false,
       active_identify: false,
       active_account: false,
-      account: "",
-      web3: null,
     };
     this.changeColor = this.changeColor.bind(this);
     this.connectWalletAccount = this.connectWalletAccount.bind(this);
@@ -51,14 +49,15 @@ class App extends Component {
   }
 
   connectWalletAccount =async () => {
-    if(this.state.account!=="") {
+    const account=JSON.parse(localStorage.getItem('matamask'));
+    if(account!=null) {
           alert("您已連接MetaMask帳號");
           return;
-        }
+    }
     const provider = new WalletConnectProvider({
       // infuraId: '3cb2eaaa46cc48828c9792f39afbe1be',
         rpc: {
-          11155111: "https://arbitrum-goerli.rpc.thirdweb.com",
+          11155111: "https://rpc.sepolia.org",
         },
         chainId: 11155111,
         network: "arbitrum goerli",
@@ -81,7 +80,15 @@ class App extends Component {
       await provider.enable();
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
-      this.setState({ web3:web3, account: accounts[0] });
+      console.log(web3);
+      console.log(provider);
+      localStorage.setItem('metamask',accounts[0]);
+      localStorage.setItem('web3',web3);
+      const web=localStorage.getItem('web3');
+      const account=localStorage.getItem('metamask');
+      console.log(account);
+      console.log(web);
+      // this.setState({ web3:web3, account: accounts[0] });
     } catch (error) {
       console.error(error);
     }

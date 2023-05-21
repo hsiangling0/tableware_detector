@@ -33,7 +33,7 @@ export default class activities extends React.Component{
                         <div className="act_info">
                             <div className="first_row_a">
                                 <span className="activity_name">{data.name}</span>
-                                <span className="amount">{data.cost}VCN</span>
+                                <span className="amount">{data.cost}EFT</span>
                             </div>
                             <div className="second_row_a">
                             <Link to={`/tableware_detector/place/${data.id}/${data.name}/${data.cost}`}>

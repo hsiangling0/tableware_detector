@@ -2,8 +2,10 @@ import React from "react";
 import "./place.css";
 import {getPlaceTime} from '../utilities/api';
 import {bookResources} from "../utilities/api";
-import { useHistory } from 'react-router-dom';
-import axios from "axios";
+import { abi } from "../utilities/contract";
+import Web3 from 'web3';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+
 export default class place extends React.Component{
   //活動id = this.props.match.params.id;
   data=["13:00-14:00","14:00-15:00","16:00-17:00","18:00-19:00"];
@@ -72,29 +74,94 @@ export default class place extends React.Component{
     const total_price=updateAns.length*this.props.match.params.price;
     this.setState({ans:updateAns,total:total_price});
   }
-  deal(e){
-    if(this.state.ans.length<1){
-        alert("請選擇至少一個時段");
-    }
-    else{
-      let hr=[];
-      this.state.ans.forEach((element) => {
-        hr.push(parseInt(element));
-      });
-      let id=parseInt(this.props.match.params.id);
-      let club=parseInt(localStorage.getItem('id'));
-      bookResources(id,this.state.date,club,hr)
-      .then((res)=>{
-        console.log(res);
-        // this.props.history.push('/tableware_detector/trade');
-      })
-      .catch((err)=>{
-        alert("交易失敗，請確認token數是否足夠");
-      })
-        // this.props.history.push('/tableware_detector/trade');
-        // useHistory().push("/tableware_detector/trade");
-    }
-  }
+  deal=async(e)=>{
+    // if(this.state.ans.length<1){
+    //     alert("請選擇至少一個時段");
+    // }
+    // else if(localStorage.getItem('metamask')==null){
+    //   alert("請先連接MetaMask");
+    // }
+    // else{
+      // const account=JSON.parse(localStorage.getItem('matamask'));
+      // const web3=localStorage.getItem('web3');
+      // console.log(account);
+      // console.log(web3);
+    //   const provider = new WalletConnectProvider({
+    //     // infuraId: '3cb2eaaa46cc48828c9792f39afbe1be',
+    //       rpc: {
+    //         11155111: "https://rpc.sepolia.org",
+    //       },
+    //       chainId: 11155111,
+    //       network: "arbitrum goerli",
+    //     qrcodeModalOptions: {
+    //       mobileLinks: [
+    //         'rainbow',
+    //         'metamask',
+    //         'argent',
+    //         'trust',
+    //         'imtoken',
+    //         'pillar',
+    //         'gnosis',
+    //         'opera',
+    //         'operaTouch',
+    //       ],
+    //     },
+    //   });
+    //   var contract;
+    //   var accounts;
+    //   try {
+    //     await provider.enable();
+    //     const web3 = new Web3(provider);
+    //     accounts = await web3.eth.getAccounts();
+    //     localStorage.setItem('metamask',accounts[0]);
+    //     contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT,{
+    //     from: accounts[0]
+    //   });
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // window.location.href='dapp://hsiangling0.github.io/tableware_detector/trade';
+    const web3 = new Web3(window.ethereum);
+    const accounts = await web3.eth.requestAccounts();
+    const account=accounts[0];
+    console.log(accounts);
+    // const account=localStorage.getItem('metamask');
+    const contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT,{
+          from: account
+        });
+    // console.log(contract);
+    // console.log(contract);
+    // console.log(web3);
+    // console.log(account);
+    let id=parseInt(this.props.match.params.id);
+    let club=parseInt(localStorage.getItem('id'));
+      try{
+        let data=await contract.methods.BookResource(club,id,this.state.date,this.state.total).send({
+          from: account
+          });
+        console.log(data);
+        console.log("finish");
+      }catch(err){
+        console.log(err);
+      }
+  // }   
+      // let hr=[];
+      // this.state.ans.forEach((element) => {
+      //   hr.push(parseInt(element));
+      // });
+      // let id=parseInt(this.props.match.params.id);
+      // let club=parseInt(localStorage.getItem('id'));
+      // bookResources(id,this.state.date,club,hr)
+      // .then((res)=>{
+      //   console.log(res);
+      //   // this.props.history.push('/tableware_detector/trade');
+      // })
+      // .catch((err)=>{
+      //   alert("交易失敗，請確認token數是否足夠");
+      // })
+    };
+  
     render() {
         return (
           <div>
@@ -124,7 +191,7 @@ export default class place extends React.Component{
                 </li>)})
                 }
                 </div>
-                <div className="total">{this.state.total}VCN</div>
+                <div className="total">{this.state.total}EFT</div>
                 </div>
                 }
                 

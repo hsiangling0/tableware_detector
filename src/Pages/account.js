@@ -107,10 +107,19 @@ export default class account extends React.Component{
    componentDidMount(){
     let temp=[];
     if(localStorage.getItem('token')!==null){
-      let name=JSON.parse(localStorage.getItem('name'));
-      let token_num=localStorage.getItem('token_num');
-      let address=JSON.parse(localStorage.getItem('address'));
-      this.setState({login:true,name:name,address:address,token:token_num});
+      let token;
+      let add;
+      let id=localStorage.getItem('id');
+      getTokenNum(id)
+      .then((res)=>{
+        localStorage.setItem('token_num', JSON.stringify(res.token));
+        localStorage.setItem('address', JSON.stringify(res.address));
+        token=res.token;
+        add=res.address;
+        let name=JSON.parse(localStorage.getItem('name'));
+      this.setState({login:true,name:name,token:token,address:add});
+      })
+      
     }
     else{
       getClub()
@@ -135,7 +144,7 @@ export default class account extends React.Component{
               <div className="acc_info">
                 <div className="first_row_a">
                   <span className="club_a">{this.state.name}</span>
-                  <span className="amount">{this.state.token}VCN</span>
+                  <span className="amount">{this.state.token}EFT</span>
                 </div>
                 <div className="second_row">
                   <span className="id">{this.state.address.substr(0,5)}......{this.state.address.substr(-5)}</span>
