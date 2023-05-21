@@ -35,7 +35,7 @@ export default class home extends React.Component{
                     <div className="info">
                         <div className="first_row">
                             <span className="club">{data.name}</span>
-                            <span className="amount">{data.token}VCN</span>
+                            <span className="amount">{data.token}EFT</span>
                         </div>
                         <div className="second_row">
                             <span className="id">{data.address.substr(0,5)}......{data.address.substr(-5)}</span>
