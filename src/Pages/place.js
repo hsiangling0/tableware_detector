@@ -4,11 +4,8 @@ import {getPlaceTime} from '../utilities/api';
 import {bookResources} from "../utilities/api";
 import { abi } from "../utilities/contract";
 import Web3 from 'web3';
-import WalletConnectProvider from '@walletconnect/web3-provider';
 
 export default class place extends React.Component{
-  //活動id = this.props.match.params.id;
-  data=["13:00-14:00","14:00-15:00","16:00-17:00","18:00-19:00"];
   constructor(props){
     super(props);
     this.state={
@@ -22,29 +19,6 @@ export default class place extends React.Component{
     this.deal=this.deal.bind(this);
   }
   imageRef = React.createRef();
-  // you can see route information here...
-  // componentDidMount() {
-  //   console.log(this.props.match);
-  //   const { id } = this.props.match.params;
-  //   this.getPostHandler(id);
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.match.params.id !== prevProps.match.params.id) {
-  //     const { id } = this.props.match.params;
-  //     this.getPostHandler(id);
-  //   }
-  // }
-
-  // getPostHandler = async (id) => {
-  //   const { data } = await axios.get(
-  //     `https://jsonplaceholder.typicode.com/posts/${id}`
-  //   );
-
-  //   this.setState({
-  //     preamount:data.amount
-  //   });
-  // };
 
   changeDate(e){
     let date_format=e.target.value.replaceAll('-','');
@@ -75,92 +49,46 @@ export default class place extends React.Component{
     this.setState({ans:updateAns,total:total_price});
   }
   deal=async(e)=>{
-    // if(this.state.ans.length<1){
-    //     alert("請選擇至少一個時段");
-    // }
-    // else if(localStorage.getItem('metamask')==null){
-    //   alert("請先連接MetaMask");
-    // }
-    // else{
-      // const account=JSON.parse(localStorage.getItem('matamask'));
-      // const web3=localStorage.getItem('web3');
-      // console.log(account);
-      // console.log(web3);
-    //   const provider = new WalletConnectProvider({
-    //     // infuraId: '3cb2eaaa46cc48828c9792f39afbe1be',
-    //       rpc: {
-    //         11155111: "https://rpc.sepolia.org",
-    //       },
-    //       chainId: 11155111,
-    //       network: "arbitrum goerli",
-    //     qrcodeModalOptions: {
-    //       mobileLinks: [
-    //         'rainbow',
-    //         'metamask',
-    //         'argent',
-    //         'trust',
-    //         'imtoken',
-    //         'pillar',
-    //         'gnosis',
-    //         'opera',
-    //         'operaTouch',
-    //       ],
-    //     },
-    //   });
-    //   var contract;
-    //   var accounts;
-    //   try {
-    //     await provider.enable();
-    //     const web3 = new Web3(provider);
-    //     accounts = await web3.eth.getAccounts();
-    //     localStorage.setItem('metamask',accounts[0]);
-    //     contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT,{
-    //     from: accounts[0]
-    //   });
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
+    if(this.state.ans.length<1){
+        alert("請選擇至少一個時段");
+    }
+    
     // window.location.href='dapp://hsiangling0.github.io/tableware_detector/trade';
-    const web3 = new Web3(window.ethereum);
-    const accounts = await web3.eth.requestAccounts();
-    const account=accounts[0];
-    console.log(accounts);
-    // const account=localStorage.getItem('metamask');
-    const contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT,{
+    else{
+      const web3 = new Web3(window.ethereum);
+      const accounts = await web3.eth.requestAccounts();
+      const account=accounts[0];
+      console.log(accounts);
+      const contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT);
+      let id=parseInt(this.props.match.params.id);
+      let club=parseInt(localStorage.getItem('id'));
+      let datime=this.state.date;
+      let hr=[];
+      this.state.ans.forEach((element) => {
+        datime+=element;
+        hr.push(parseInt(element));
+      });
+      console.log("finish contract");
+      try{
+        let data=await contract.methods.BookResource(club,id,datime,this.state.total).send({
           from: account
         });
-    // console.log(contract);
-    // console.log(contract);
-    // console.log(web3);
-    // console.log(account);
-    let id=parseInt(this.props.match.params.id);
-    let club=parseInt(localStorage.getItem('id'));
-      try{
-        let data=await contract.methods.BookResource(club,id,this.state.date,this.state.total).send({
-          from: account
-          });
         console.log(data);
         console.log("finish");
-      }catch(err){
-        console.log(err);
-      }
-  // }   
-      // let hr=[];
-      // this.state.ans.forEach((element) => {
-      //   hr.push(parseInt(element));
-      // });
-      // let id=parseInt(this.props.match.params.id);
-      // let club=parseInt(localStorage.getItem('id'));
-      // bookResources(id,this.state.date,club,hr)
-      // .then((res)=>{
-      //   console.log(res);
-      //   // this.props.history.push('/tableware_detector/trade');
-      // })
-      // .catch((err)=>{
-      //   alert("交易失敗，請確認token數是否足夠");
-      // })
-    };
+        bookResources(id,this.state.date,club,hr)
+        .then((res)=>{
+          console.log(res);
+          this.props.history.push('/tableware_detector/trade');
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+    }catch(err){
+      console.log(err);
+      alert("交易失敗，請確認錢包內代幣數是否足夠");
+    }
+    }
+  };
   
     render() {
         return (

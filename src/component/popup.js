@@ -27,7 +27,7 @@ export default function POPUP(props) {
                     <Delete width="35" height="35" className='app_delete' alt='delete_icon'/>
                 </div>
                 <h3 className='ask'>是否確定上傳此照片</h3>
-                <p className='ask_context'>提醒您，一次活動僅能上傳一張照片且上傳後無法更改。</p>
+                <p className='ask_context'>提醒您，一次活動僅能上傳一張照片且上傳後無法更改。<br/><br/>代幣與結果將於三分鐘內發送更新。</p>
                 <Link to="/tableware_detector/activities" className="concert" onClick={concertPic}>
                     <button className="concert">確定</button>
                 </Link>

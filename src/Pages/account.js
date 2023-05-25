@@ -188,7 +188,7 @@ export default class account extends React.Component{
                     <Delete width="35" height="35" className='app_delete' alt='delete_icon'/>
                 </div>
                 <h3 className='ask'>更改帳戶密碼</h3>
-                <input type="text" className="password" placeholder={"請輸入新密碼"} onChange={(e)=>this.setState({newpwd:e.target.value})}></input>
+                <input type="password" className="password" placeholder={"請輸入新密碼"} onChange={(e)=>this.setState({newpwd:e.target.value})}></input>
                 <button className="concert"onClick={()=> this.updatePassword(this)}>確定</button>
               </div>
             </div>}
