@@ -1,6 +1,7 @@
 import React from "react";
 import "./home.css";
 import {getClub} from '../utilities/api';
+import { Link } from "react-router-dom";
 
 export default class home extends React.Component{
     constructor(props){
@@ -29,7 +30,7 @@ export default class home extends React.Component{
             <div className="rank_context">
             {this.state.data.map((data,index)=>{
                 return(
-                    <div className="rank_data" key={index}>
+                    <a className="rank_data" key={index} href={`${process.env.REACT_APP_ADDRESS_DETAIL}${data.address}`}>
                     <span className="num">{index+1}</span>
                     <div className="photo"></div>
                     <div className="info">
@@ -41,7 +42,7 @@ export default class home extends React.Component{
                             <span className="id">{data.address.substr(0,5)}......{data.address.substr(-5)}</span>
                         </div>
                     </div>
-                </div>)})
+                </a>)})
             }
             </div>
           </div>

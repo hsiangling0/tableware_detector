@@ -27,6 +27,8 @@ h4{
     display: flex;
     align-items: center;
     margin: 2vh 7vw;
+    text-decoration: none;
+    color: black;
 }
 .num{
     font-weight: bold;
