@@ -93,16 +93,16 @@ class App extends Component {
 
         {/* </Container> */}
         <div className='footer'>
-          <NavLink to="/" className="list" activeClassName="list-active" exact>
+          <NavLink to="/tableware_detector/" className="list" activeClassName="list-active" exact>
             <Rank width="48" height="48" className='app_rank' alt='rank_icon' />
           </NavLink>
-          <NavLink to="/activities" className="list" activeClassName="list-active" >
-            <Activ width="48" height="48" className='app_activ' alt='activities_icon' />
+          <NavLink to="/tableware_detector/activities" className="list" activeClassName="list-active">
+            <Activ  width="48" height="48" className='app_activ' alt='activities_icon' />
           </NavLink>
-          <NavLink to="/trade" className="list" activeClassName="list-active">
-            <Trade width="48" height="48" className="app_trade" alt="trade_icon" />
+          <NavLink to="/tableware_detector/trade" className="list" activeClassName="list-active">
+            <Trade  width="48" height="48" className="app_trade" alt="trade_icon" />
           </NavLink>
-          <NavLink to="/account" className="list" activeClassName="list-active">
+          <NavLink to="/tableware_detector/account" className="list" activeClassName="list-active">
             <User width="48" height="48" className='app_user' alt='user_icon' />
           </NavLink>
         </div>
