@@ -6,10 +6,6 @@ import { uploadPic } from '../utilities/api';
 export default function POPUP(props) {
     const concertPic=()=>{
         var time=new Date().toISOString();
-        console.log(time);
-        console.log(props.num);
-        console.log(props.activity_id);
-        console.log(props.base64);
         uploadPic(props.num,time,props.activity_id,props.base64)
         .then((res)=>{
             console.log(res);

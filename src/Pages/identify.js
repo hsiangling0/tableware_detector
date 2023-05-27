@@ -1,6 +1,4 @@
 import React from "react";
-import { useState } from "react";
-// import ReactDOM from "react-dom";
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl';
 import "./identify.css";
@@ -14,21 +12,7 @@ import WARNING from '../component/warning';
 tf.setBackend('webgl');
 // http-server -c1 --cors .
 const threshold = 0.6;
-// const INDEXEDDB_DB = 'tensorflowjs';
-// const INDEXEDDB_STORE = 'model_info_store';
-// const INDEXEDDB_KEY = 'web-model';
-
-// async function load_model() {
-//   // It's possible to load the model locally or from a repo
-//   // You can choose whatever IP and PORT you want in the "http://127.0.0.1:8080/model.json" just set it before in your https server
-//   const model = await loadGraphModel("http://127.0.0.1:8080/model.json");
-//   // const model = await loadGraphModel("https://github.com/hsiangling0/object_detector_app/blob/main/models/tableware_detector/model.json");
-//   // console.log(model.outputNodes);
-//   return model;
-// }
-
-
-export default class identify extends React.Component {
+export default class Identify extends React.Component {
   videoRef = React.createRef();
   canvasRef = React.createRef();
   constructor(props){
@@ -184,11 +168,9 @@ export default class identify extends React.Component {
   };
   setButton(e,value){
     this.setState({ button: value,shutdown:value });
-    console.log(this.state.button);
   }
   setBack(e,value){
     this.setState({ shutdown:value,back:value });
-    console.log(this.state.button);
   }
   setPage(e,value){
     // let temp=this.state.shutdown;

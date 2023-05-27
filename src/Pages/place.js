@@ -5,7 +5,7 @@ import {bookResources} from "../utilities/api";
 import { abi } from "../utilities/contract";
 import Web3 from 'web3';
 
-export default class place extends React.Component{
+export default class Place extends React.Component{
   constructor(props){
     super(props);
     this.state={
@@ -58,7 +58,6 @@ export default class place extends React.Component{
       const web3 = new Web3(window.ethereum);
       const accounts = await web3.eth.requestAccounts();
       const account=accounts[0];
-      console.log(accounts);
       const contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT);
       let id=parseInt(this.props.match.params.id);
       let club=parseInt(localStorage.getItem('id'));
@@ -68,13 +67,10 @@ export default class place extends React.Component{
         datime+=element;
         hr.push(parseInt(element));
       });
-      console.log("finish contract");
       try{
         let data=await contract.methods.BookResource(club,id,datime,this.state.total).send({
           from: account
         });
-        console.log(data);
-        console.log("finish");
         bookResources(id,this.state.date,club,hr)
         .then((res)=>{
           console.log(res);

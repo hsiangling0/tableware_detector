@@ -1,10 +1,9 @@
 import React from "react";
 import "./apply.css";
-import axios from "axios";
 import {ReactComponent as Delete} from '../icons/delete.svg';
 import { showPic } from "../utilities/api";
 import { reportErr } from "../utilities/api";
-export default class apply extends React.Component{
+export default class Apply extends React.Component{
   //活動id = this.props.match.params.id;
   constructor(props){
     super(props);
@@ -17,30 +16,6 @@ export default class apply extends React.Component{
     }
     this.apply_text=this.apply_text.bind(this);
   }
-  // imageRef = React.createRef();
-  // you can see route information here...
-  // componentDidMount() {
-  //   console.log(this.props.match);
-  //   const { id } = this.props.match.params;
-  //   this.getPostHandler(id);
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.match.params.id !== prevProps.match.params.id) {
-  //     const { id } = this.props.match.params;
-  //     this.getPostHandler(id);
-  //   }
-  // }
-
-  // getPostHandler = async (id) => {
-  //   const { data } = await axios.get(
-  //     `https://jsonplaceholder.typicode.com/posts/${id}`
-  //   );
-
-  //   this.setState({
-  //     preamount:data.amount
-  //   });
-  // };
 
   apply_text(){
     if(this.state.amount<0){

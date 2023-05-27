@@ -3,7 +3,7 @@ import "./activities.css";
 import { Link } from 'react-router-dom';
 import withAuth from "../utilities/withAuth";
 import { getActivities } from "../utilities/api";
-export default class activities extends React.Component{
+export default class Activities extends React.Component{
 constructor(props){
   super(props);
   this.state={
@@ -42,13 +42,13 @@ componentDidMount(){
                     </div>
                     <div className="second_row_a">
                       {data.state==0&&<button className="state_e">已過期</button>}
-                      {data.state==1&&<Link to={`/tableware_detector/apply/${data.id}`}>
+                      {/* {data.state==1&&<Link to={`/tableware_detector/apply/${data.id}`}>
                       <button className="state">已上傳</button>
                     </Link>}
                       {data.state==null&&<Link to={`/tableware_detector/identify/${data.id}`}>
                       <button className="state_n">未上傳
                       </button>
-                    </Link>}
+                    </Link>} */}
                     </div>
                   </div>
                 </div>)})
