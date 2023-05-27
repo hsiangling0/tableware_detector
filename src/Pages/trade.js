@@ -35,9 +35,9 @@ export default class Trade extends React.Component{
                                 <span className="amount">{data.cost}EFT</span>
                             </div>
                             <div className="second_row_a">
-                            {/* <Link to={`/tableware_detector/place/${data.id}/${data.name}/${data.cost}`}> */}
+                            <Link to={`/tableware_detector/place/${data.id}/${data.name}/${data.cost}`}>
                               <button className="state_n">租借</button>
-                            {/* </Link> */}
+                            </Link>
                             </div>
                         </div>
                     </div>)})
