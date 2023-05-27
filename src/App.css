@@ -3,15 +3,7 @@
     background-color: white;
     height: 100vh;
   }
-  
-  /* .App .navbar-brand {
-    font-weight: bold;
-  }
-  
-  .app-nav-bar {
-    background-color: #49494b;
-  } */
-  .middle{
+.middle{
     height: 78vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -39,9 +31,6 @@
 .list{
   fill:#adadad;
 }
-.list:focus{
-  fill:#2894FF;
-}
 .footer{
   height: 9vh;
   width: 100%;
@@ -51,4 +40,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.list-active{
+  fill:#2894FF;
 }

@@ -96,21 +96,6 @@ export default class UPLOAD extends React.Component{
           ctx.fillStyle = "#000000";
           ctx.fillText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%", x, y);
         });
-        // const dataURL = canvas.toDataURL('image/png')
-        // const blobBin = atob(dataURL.split(',')[1])
-        // const array = []
-        // for (let i = 0; i < blobBin.length; i++) {
-        //     array.push(blobBin.charCodeAt(i))
-        // }
-        // const file = new Blob([new Uint8Array(array)], { type: 'image/png' });
-        // var link=URL.createObjectURL(file);
-        // console.log(link);
-        // // 將file 加至 formData
-        // console.log(file);
-        // const formData = new FormData()
-        // formData.append('file', file, 'test.png')
-        // console.log(formData.getAll('file'));
-        console.log(eco);
         this.setState({friendly:eco,unfriendly:noteco,canvasURL:canvas.toDataURL()});
       };
   startIdentify(){
@@ -135,7 +120,6 @@ export default class UPLOAD extends React.Component{
   createImageFromFile(img, file) {
 	return new Promise((resolve, reject) => {    
     img.src = URL.createObjectURL(file);
-    console.log(img.src);
     this.setState({
       imageURL:img.src
     });

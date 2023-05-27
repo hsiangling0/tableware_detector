@@ -1,6 +1,6 @@
 import React from "react";
 import "./account.css";
-import {ReactComponent as Account} from '../icons/account_data.svg';
+import {ReactComponent as AccountIcon} from '../icons/account_data.svg';
 import {ReactComponent as Apply} from '../icons/recheck_apply.svg';
 import {ReactComponent as Question} from '../icons/question.svg';
 import {ReactComponent as Logout} from '../icons/logout.svg';
@@ -10,7 +10,7 @@ import {login} from '../utilities/api';
 import {getTokenNum} from '../utilities/api';
 import {updataAddrOrPasswd} from '../utilities/api';
 
-export default class account extends React.Component{
+export default class Account extends React.Component{
   constructor(props){
     super(props);
     this.state={
@@ -154,7 +154,7 @@ export default class account extends React.Component{
             <h4 className="manage">管理</h4>
             <div className="choice_a">
               <div className="row" onClick={()=>this.setState({option1:true,tmpaddress:''})}>
-                <Account width="54" height="54" className='app_account' alt='account_icon'/>
+                <AccountIcon width="54" height="54" className='app_account' alt='account_icon'/>
                 <span className="function">更改錢包地址</span>
               </div>
               <div className="row" onClick={()=>this.setState({option2:true,newpwd:''})}>

@@ -11,7 +11,6 @@ export const customFetch = async (
   if (auth) {
     let token = JSON.parse(localStorage.getItem('token') || '{}');
     token="Bearer "+token;
-    console.log(token);
     const headers = {
       'Content-Type': 'application/json',
       Authorization: token,
