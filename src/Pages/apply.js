@@ -35,10 +35,8 @@ export default class Apply extends React.Component{
     }
   }
   componentDidMount(){
-    console.log(this.props.match.params.id);
     showPic(this.props.match.params.id)
     .then((res)=>{
-      console.log(res.length);
       let index=res.length-1;
       this.setState({url:res[index].base64,preamount:res[index].num_friendly,picID:res[index].id})
     })

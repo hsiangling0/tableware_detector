@@ -79,7 +79,6 @@ export default class Account extends React.Component{
           this.setState({option1:false,address:res.address});
         })
         .catch((err)=>{
-          console.log(err);
           alert("更改錢包地址失敗，請注意地址格式是否正確");
           this.setState({option1:false});
         })
@@ -93,12 +92,10 @@ export default class Account extends React.Component{
         let id=localStorage.getItem('id');
         updataAddrOrPasswd(id,this.state.newpwd,this.state.name,this.state.address)
         .then((res)=>{
-          console.log(res);
           localStorage.setItem('password', JSON.stringify(res.password));
           this.setState({option2:false});
         })
         .catch((err)=>{
-          console.log(err);
           alert("更改密碼失敗");
           this.setState({option2:false});
         })
@@ -165,7 +162,7 @@ export default class Account extends React.Component{
                 <Question width="54" height="54" className='app_question' alt='question_icon'/>
                 <span className="function">使用說明</span>
               </div>
-              <div className="row" style={{border:"none"}} onClick={()=>{this.setState({login:false});localStorage.removeItem('token');}}>
+              <div className="row" style={{border:"none"}} onClick={()=>{this.setState({login:false});localStorage.removeItem('token');window.location.reload();}}>
                 <Logout width="54" height="54" className='app_logout' alt='logout_icon'/>
                 <span className="function" >登出</span>
               </div>
@@ -188,7 +185,7 @@ export default class Account extends React.Component{
                     <Delete width="35" height="35" className='app_delete' alt='delete_icon'/>
                 </div>
                 <h3 className='ask'>更改帳戶密碼</h3>
-                <input type="password" className="password" placeholder={"請輸入新密碼"} onChange={(e)=>this.setState({newpwd:e.target.value})}></input>
+                <input type="password" className="address" placeholder={"請輸入新密碼"} onChange={(e)=>this.setState({newpwd:e.target.value})}></input>
                 <button className="concert"onClick={()=> this.updatePassword(this)}>確定</button>
               </div>
             </div>}
