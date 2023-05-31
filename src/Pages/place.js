@@ -73,12 +73,10 @@ export default class Place extends React.Component{
     else{
       let club=parseInt(localStorage.getItem('id'));
       let hr=[];
-      let datime=this.state.date;
       this.state.ans.forEach((element) => {
-        datime=datime+"-"+element;
         hr.push(parseInt(element));
       });
-      this.setState({button:true,club_id:club,hr:hr,date:datime});
+      this.setState({button:true,club_id:club,hr:hr});
 
     //   const web3 = new Web3(window.ethereum);
     //   const accounts = await web3.eth.requestAccounts();

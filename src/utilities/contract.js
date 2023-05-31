@@ -132,6 +132,12 @@ export const abi=[
 				"type": "string"
 			},
 			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_hr",
+				"type": "string"
+			},
+			{
 				"indexed": true,
 				"internalType": "uint256",
 				"name": "_resourceID",
@@ -171,6 +177,11 @@ export const abi=[
 				"type": "string"
 			},
 			{
+				"internalType": "string",
+				"name": "_hr",
+				"type": "string"
+			},
+			{
 				"internalType": "uint256",
 				"name": "_cost",
 				"type": "uint256"
@@ -196,6 +207,11 @@ export const abi=[
 			{
 				"internalType": "string",
 				"name": "_date",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_hr",
 				"type": "string"
 			},
 			{
