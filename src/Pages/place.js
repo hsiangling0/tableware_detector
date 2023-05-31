@@ -20,9 +20,12 @@ export default class Place extends React.Component{
     this.buy_place=this.buy_place.bind(this);
     this.changeDate=this.changeDate.bind(this);
     this.deal=this.deal.bind(this);
+    this.setBack=this.setBack.bind(this);
   }
   imageRef = React.createRef();
-
+  setBack(value){
+    this.setState({button:value});
+  }
   changeDate(e){
     let date_format=e.target.value.replaceAll('-','');
     this.setState({date:date_format});
@@ -62,7 +65,9 @@ export default class Place extends React.Component{
     else if(localStorage.getItem('metamask')==null){
       alert("請先連接MetaMask才可執行交易");
     }
-    else if(localStorage.getItem('metamask') != localStorage.getItem('address')){
+    else if(localStorage.getItem('metamask') != JSON.parse(localStorage.getItem('address'))){
+      console.log(localStorage.getItem('metamask'));
+      console.log(localStorage.getItem('address'));
       alert("串接的錢包地址並非此社團錢包地址，請重新串接或再次確認社團錢包地址");
     }
     else{
@@ -140,7 +145,7 @@ export default class Place extends React.Component{
                 }
                 
                 <button className="apply_button" style={{backgroundColor:"#C7C7E2"}}onClick={(e)=>this.deal(e)}>租借</button>
-                <CHAIN trigger={this.state.button} resource_id={this.props.match.params.id} hr={this.state.hr} club_id={this.state.club_id} date={this.state.date}></CHAIN>
+                <CHAIN trigger={this.state.button} setBack={this.setBack} resource_id={this.props.match.params.id} hr={this.state.hr} club_id={this.state.club_id} date={this.state.date}></CHAIN>
             </div>
           </div>
         );
