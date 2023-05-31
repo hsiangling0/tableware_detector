@@ -11,19 +11,6 @@ import { ReactComponent as User } from './icons/User.svg';
 import { ReactComponent as Wallet } from './icons/wallet.svg';
 import Web3 from 'web3';
 import WalletConnectProvider from '@walletconnect/web3-provider';
-// async function connectWallet(){
-//   if (typeof window.ethereum !== 'undefined') {
-//     const web3 = new Web3(window.ethereum);
-//     try {
-//       await window.ethereum.enable();
-//       const accounts = await web3.eth.getAccounts();
-//       return accounts;
-//     } catch (error) {
-//       return error;
-//       console.error(error);
-//     }
-//   }
-// }
 class App extends Component {
   constructor(props) {
     super(props);
@@ -69,10 +56,6 @@ class App extends Component {
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
       localStorage.setItem('metamask',accounts[0]);
-      localStorage.setItem('web3',web3);
-      const web=localStorage.getItem('web3');
-      const account=localStorage.getItem('metamask');
-      // this.setState({ web3:web3, account: accounts[0] });
     } catch (error) {
       console.error(error);
     }

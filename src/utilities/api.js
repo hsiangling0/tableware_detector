@@ -24,6 +24,9 @@ export const getResources = () =>
 export const bookResources = (resource_id,booked_day,club_id,hr) =>
     customFetch('/resources/book','POST',true,{},{resource_id:resource_id,booked_day:booked_day,club_id:club_id,hr:hr});
 
+export const bookBlockChain = (resource_id,booked_day,club_id,hr) =>
+customFetch('/resources/book/blockchain','POST',true,{},{resource_id:resource_id,booked_day:booked_day,club_id:club_id,hr:hr});
+
 export const getPlaceTime =(place_id,date)=>
     customFetch('/resources/free','GET',false,{resource_id:place_id,booked_day:date});
 

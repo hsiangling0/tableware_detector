@@ -4,7 +4,7 @@ import {getPlaceTime} from '../utilities/api';
 import {bookResources} from "../utilities/api";
 import { abi } from "../utilities/contract";
 import Web3 from 'web3';
-
+import CHAIN from '../component/tradeToChain';
 export default class Place extends React.Component{
   constructor(props){
     super(props);
@@ -13,6 +13,9 @@ export default class Place extends React.Component{
       ans:[],
       total:0,
       time:[],
+      button:false,
+      club_id:"",
+      hr:[],
     }
     this.buy_place=this.buy_place.bind(this);
     this.changeDate=this.changeDate.bind(this);
@@ -29,7 +32,8 @@ export default class Place extends React.Component{
       this.setState({time:res.free_hour});
     })
     .catch((err)=>{
-      console.log(err);
+      alert("操作錯誤，請回到購買頁面重新執行");
+      window.location.href("/tableware_detector/trade");
     })
   }
   buy_place(e){
@@ -48,41 +52,57 @@ export default class Place extends React.Component{
     const total_price=updateAns.length*this.props.match.params.price;
     this.setState({ans:updateAns,total:total_price});
   }
-  deal=async(e)=>{
-    if(this.state.ans.length<1){
+  // deal=async(e)=>{
+    deal(){
+      if(this.state.ans.length<1){
         alert("請選擇至少一個時段");
-    }
+      }
     
     // window.location.href='dapp://hsiangling0.github.io/tableware_detector/trade';
+    else if(localStorage.getItem('metamask')==null){
+      alert("請先連接MetaMask才可執行交易");
+    }
+    else if(localStorage.getItem('metamask') != localStorage.getItem('address')){
+      alert("串接的錢包地址並非此社團錢包地址，請重新串接或再次確認社團錢包地址");
+    }
     else{
-      const web3 = new Web3(window.ethereum);
-      const accounts = await web3.eth.requestAccounts();
-      const account=accounts[0];
-      const contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT);
-      let id=parseInt(this.props.match.params.id);
       let club=parseInt(localStorage.getItem('id'));
-      let datime=this.state.date;
       let hr=[];
+      let datime=this.state.date;
       this.state.ans.forEach((element) => {
-        datime+=element;
+        datime=datime+"-"+element;
         hr.push(parseInt(element));
       });
-      try{
-        let data=await contract.methods.BookResource(club,id,datime,this.state.total).send({
-          from: account
-        });
-        bookResources(id,this.state.date,club,hr)
-        .then((res)=>{
-          console.log(res);
-          this.props.history.push('/tableware_detector/trade');
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
-    }catch(err){
-      console.log(err);
-      alert("交易失敗，請確認錢包內代幣數是否足夠");
-    }
+      this.setState({button:true,club_id:club,hr:hr,date:datime});
+
+    //   const web3 = new Web3(window.ethereum);
+    //   const accounts = await web3.eth.requestAccounts();
+    //   const account=accounts[0];
+    //   const contract = new web3.eth.Contract(abi,process.env.REACT_APP_SMART_CONTRACT);
+    //   let id=parseInt(this.props.match.params.id);
+    //   let club=parseInt(localStorage.getItem('id'));
+    //   let datime=this.state.date;
+    //   let hr=[];
+    //   this.state.ans.forEach((element) => {
+    //     datime+=element;
+    //     hr.push(parseInt(element));
+    //   });
+    //   try{
+    //     let data=await contract.methods.BookResource(club,id,datime,this.state.total).send({
+    //       from: account
+    //     });
+    //     bookResources(id,this.state.date,club,hr)
+    //     .then((res)=>{
+    //       console.log(res);
+    //       this.props.history.push('/tableware_detector/trade');
+    //     })
+    //     .catch((err)=>{
+    //       console.log(err);
+    //     })
+    // }catch(err){
+    //   console.log(err);
+    //   alert("交易失敗，請確認錢包內代幣數是否足夠");
+    // }
     }
   };
   
@@ -120,6 +140,7 @@ export default class Place extends React.Component{
                 }
                 
                 <button className="apply_button" style={{backgroundColor:"#C7C7E2"}}onClick={(e)=>this.deal(e)}>租借</button>
+                <CHAIN trigger={this.state.button} resource_id={this.props.match.params.id} hr={this.state.hr} club_id={this.state.club_id} date={this.state.date}></CHAIN>
             </div>
           </div>
         );

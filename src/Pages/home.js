@@ -29,7 +29,7 @@ export default class Home extends React.Component{
             <div className="rank_context">
             {this.state.data.map((data,index)=>{
                 return(
-                    <a className="rank_data" key={index} href={`${process.env.REACT_APP_ADDRESS_DETAIL}${data.address}`}>
+                    <a className="rank_data" key={index} href={`${process.env.REACT_APP_ADDRESS_DETAIL}${process.env.REACT_APP_SMART_CONTRACT}`}>
                     <span className="num">{index+1}</span>
                     <div className="photo"></div>
                     <div className="info">
