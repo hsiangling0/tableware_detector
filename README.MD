@@ -1,7 +1,7 @@
 # Real-time object detection in the browser using TensorFlow.js
 
 This project is a simple web-app that loads a model in the TensorFlow.js layers format using javascript and performs real-time inferences ingesting videos from a PC or mobile camera.
-![home](./Trading App.png)
+![home](tradingapp.png)
 
 ## Getting started
 
